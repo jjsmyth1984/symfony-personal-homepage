@@ -1,0 +1,649 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello HomepageController!{% endblock %}
+{% block body %}
+    <div id="fh5co-loader"></div>
+    <div id="page">
+        <header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url({{ asset('images/cover_bg_3.jpg') }});" data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div id="user-profile" class="container">
+                <div class="display-t js-fullheight">
+                    <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+                        <div class="profile-thumb" style="background: url({{ asset('images/user-3.jpg') }});"></div>
+                        <div class="profile-name text-center">
+                            <h1><span>Joseph James Smyth</span></h1>
+                            <h3 class="mb-4"><span>Full Stack Software Engineer</span></h3>
+                            <ul class="fh5co-social-icons">
+{#                                <li><a href="#"><i class="icon-twitter2"></i></a></li>#}
+{#                                <li><a href="#"><i class="icon-facebook2"></i></a></li>#}
+                                <li>
+                                    <a target="_blank" href="https://www.linkedin.com/in/joseph-james-smyth-bb509a207/"><i class="icon-linkedin2"></i></a>
+                                </li>
+{#                                <li><a href="#"><i class="icon-dribbble2"></i></a></li>#}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="fh5co-about" class="animate-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                        <h2>About Me</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="info">
+                            <li>
+                                <span class="first-block">Full Name:</span><span class="second-block">Joseph James Smyth</span>
+                            </li>
+                            <li>
+                                <span class="first-block">Location:</span><span class="second-block">Randalstown, N.Ireland</span>
+                            </li>
+                            <li>
+                                <span class="first-block">Email:</span><span class="second-block"><a target="_blank" href="mailto:joe@jjsmyth.net?subject=Website enquiry">joe@jjsmyth.net</a></span>
+                            </li>
+                            <li>
+                                <span class="first-block">LinkedIn:</span><span class="second-block"><a target="_blank" href="https://www.linkedin.com/in/joseph-james-smyth-bb509a207/">joseph-james-smyth-bb509a207</a></span>
+                            </li>
+                            <li>
+                                <span class="first-block">GitHub:</span><span class="second-block"><a target="_blank" href="https://github.com/jjsmyth1984">jjsmyth1984</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <h2>Hello There!</h2>
+                        <p>I am a technically minded and solutions-driven Full Stack Engineer with a robust background
+                            in
+                            developing scalable web applications and managing full project lifecycles. Over my career,
+                            I've
+                            garnered extensive experience in designing and optimising MySQL databases, implementing
+                            comprehensive testing strategies with PHPUnit and creating robust RESTful APIs.</p>
+                        <p>My expertise lies in leveraging the Symfony framework to build maintainable and
+                            high-performing
+                            web applications, with a keen focus on API design, data security, and user-centered design
+                            integration. I have a proven track record of leading cross-functional teams, mentoring new
+                            engineers and driving projects to timely and budget-conscious completion.</p>
+                        <p>Throughout my professional journey, I have demonstrated my ability to develop complex
+                            financial
+                            algorithms and maintain compliance with industry standards. I thrive on solving intricate
+                            technical challenges and am passionate about enhancing application performance and user
+                            satisfaction.</p>
+                        <h3>Work Philosophy</h3>
+                        <p>I am passionate about writing clean, maintainable code that delivers robust solutions for
+                            users.
+                            My approach to software development is grounded in the four pillars of Object-Oriented
+                            Programming (OOP) and the five design principles known as SOLID.</p>
+                        <ul class="body-list">
+                            <li><u>Polymorphism</u> using inheritance, a child method can then override the parent
+                                method to
+                                provide their own implementation.
+                            </li>
+                            <li><u>Inheritance</u> Inheriting properties and methods from a parent class promoting code
+                                reuse.
+                            </li>
+                            <li><u>Encapsulation</u> prevents direct access to class data from outside the class using
+                                private properties and promotes data hiding. Need to then use Getters and Setters to get
+                                and
+                                set the data in a controlled form.
+                            </li>
+                            <li><u>Abstraction</u> Abstract classes cannot be instantiated directly but serves as a
+                                blueprint for other classes. It provides a way to define common properties and methods
+                                that
+                                can be inherited by its subclasses, which are regular classes that extend the abstract
+                                class.
+                            </li>
+                        </ul>
+                        <p>
+                            To aid the 4 pillars, I also follow Robert C. Martin's 5 principles of Object-Oriented
+                            Design.
+                        </p>
+                        <ul class="body-list">
+                            <li><u>Single-responsibility Principle</u> this principle states that a class or method
+                                should
+                                have only one responsibility thus one reason to change.
+                            </li>
+                            <li><u>Open-closed Principle</u> to design classes to be open to extension but closed to
+                                modification.
+                            </li>
+                            <li><u>Liskov Substitution Principle</u> to ensure that subclasses can be used
+                                interchangeably
+                                with their parent classes (using inheritance and polymorphism).
+                            </li>
+                            <li><u>Interface Segregation Principle</u> to create specific and small interfaces to
+                                prevent
+                                forcing classes to implement unused methods.
+                            </li>
+                            <li><u>Dependency Inversion Principle</u> a high level class should not depend on a lower
+                                level
+                                class both should depend on abstractions (using abstract classes or interfaces).
+                            </li>
+                        </ul>
+                        <p>Dependency Injection plays a significant role in my development process as it leads to
+                            decoupling
+                            components for better testability and maintainability.
+                        </p>
+                        <p>I also apply the KISS i.e. 'Keep It Simple Silly', DRY i.e. 'Don't Repeat Yourself'
+                            and YAGNI i.e. 'You Aren't Gonna Need It' methodologies to avoid complexity and redundancy,
+                            keeping the codebase efficient and clean.
+                        </p>
+                        <p>I strictly follow PSR coding standards, ensuring consistency, interoperability and best
+                            practices
+                            in my projects.</p>
+                        <p>Additionally, I emphasise Test-Driven Development (TDD) inline with Domain-Driven Design
+                            (DDD),
+                            focusing on translating real-world concepts into software solutions.</p>
+                        <p>Security and performance are top priorities in my work, with a focus on caching, Symfony
+                            Messenger along with RabbitMQ for asynchronous messaging.</p>
+                        <p>I implement strong authentication using OAuth2 and JWT, ensuring data security across all
+                            APIs
+                            along with adhering to OWASP guidelines.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-resume" class="fh5co-bg-color">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                        <h2>My Resume</h2>
+                        <div class="custom-btn-group mt-4">
+                            <a href="{{ asset('fs/cv/JosephJamesSmythCV.pdf') }}" class="btn mr-lg-2 custom-btn" download="JosephJamesSmythCV.pdf">
+                                <i class="uil uil-file-alt"></i>
+                                Download Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-0">
+                        <ul class="timeline">
+                            <li class="timeline-heading text-center animate-box">
+                                <div><h3>Work Experience</h3></div>
+                            </li>
+                            <li class="animate-box timeline-unverted">
+                                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Lead Software Engineer</h3>
+                                        <span class="company">Pulse Sales Solutions LTD - March 2022 - Current</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Lead project lifecycles, including planning, execution and delivery. Drive
+                                            the
+                                            development process forward through close collaboration with UX and UI
+                                            designers
+                                            to create intuitive and effective user interfaces.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted animate-box">
+                                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Senior Software Engineer</h3>
+                                        <span class="company">Pulse Sales Solutions LTD - March 2016 - March 2022</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Monitored application performance metrics and conducted performance testing
+                                            to
+                                            validate improvements. Crafted clean, modular and maintainable code
+                                            following
+                                            industry standards and best practices.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="animate-box timeline-unverted">
+                                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Software Engineer</h3>
+                                        <span class="company">Zesty LTD - October 2014 - March 2016</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Worked with product managers and stakeholders to understand project
+                                            requirements
+                                            and translate into technical solutions. Developed and maintained mortgage
+                                            and
+                                            loan calculators for a major UK and Ireland bank, ensuring accuracy,
+                                            reliability and compliance with financial regulations.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted animate-box">
+                                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Software Engineer</h3>
+                                        <span class="company">Seopa LTD - October 2011 - March 2014</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Integrated with external APIs provided by insurance companies to retrieve
+                                            real-time quotes and policy information. Created and maintained integrations
+                                            with various insurance providers' APIs to fetch real-time quotes for car,
+                                            home,
+                                            and health insurance. Documented technical specifications, API endpoints,
+                                            and
+                                            system architecture for the quotation comparison platform.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="animate-box timeline-unverted">
+                                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Junior Software Engineer</h3>
+                                        <span class="company">Accord IT Solutions LTD - October 2010 - March 2011</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Create custom plugins using Visual Basic to extend the functionality of Sage
+                                            accountancy software.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted animate-box">
+                                <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Business Owner and Junior Software Engineer</h3>
+                                        <span class="company">Seopa LTD - August 2008 - October 2010</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Home-based server reseller company specialising in web hosting and website
+                                            development.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <br>
+                            <li class="timeline-heading text-center animate-box">
+                                <div><h3>Education</h3></div>
+                            </li>
+                            <li class="animate-box timeline-unverted">
+                                <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Postgraduate Diploma</h3>
+                                        <span class="company">Ulster University - 2007 - 2008</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Business and Information Innovation.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="timeline-inverted animate-box">
+                                <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title">Bachelors Degree</h3>
+                                        <span class="company">Ulster University - 2004 - 2007</span>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>Business with Computing.</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-features" class="animate-box">
+            <div class="container">
+                <div class="services-padding">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                            <h2>Areas of expertise</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <div class="feature-left">
+							<span class="icon">
+								<i class="icon-bargraph"></i>
+							</span>
+                                <div class="feature-copy">
+                                    <h3>Software Development</h3>
+                                    <p>I would consider myself a full stack engineer, as I have experience with
+                                        frontend,
+                                        backend and server setup and management.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-left">
+							<span class="icon">
+								<i class="icon-search"></i>
+							</span>
+                                <div class="feature-copy">
+                                    <h3>PHP</h3>
+                                    <p>I have 15+ years experience working with the PHP language, I have work through
+                                        PHP4
+                                        through to PHP8.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-left">
+							<span class="icon">
+								<i class="icon-briefcase"></i>
+							</span>
+                                <div class="feature-copy">
+                                    <h3>Symfony Framework</h3>
+                                    <p>I have 10+ years using the Symfony framework, and it's where my passions
+                                        lays.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <div class="feature-left">
+							<span class="icon">
+								<i class="icon-paintbrush"></i>
+							</span>
+                                <div class="feature-copy">
+                                    <h3>MYSQL and MSSQL</h3>
+                                    <p>My two main areas of expertise in database development and management but also
+                                        have
+                                        lesser experience using PostgreSQL, MariaDB and MongoDB.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-left">
+							<span class="icon">
+								<i class="icon-chat"></i>
+							</span>
+                                <div class="feature-copy">
+                                    <h3>Test Driven Development</h3>
+                                    <p>In TDD, you first write a test for a new feature to fail, then write the minimal
+                                        amount of code needed to pass that test, and finally refactor the code (from
+                                        minimal
+                                        to efficient) to meet the necessary standards.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="feature-left">
+							<span class="icon">
+								<i class="icon-genius"></i>
+							</span>
+                                <div class="feature-copy">
+                                    <h3>Content Management Systems (CMS)</h3>
+                                    <p>Drupal, WordPress and Prestashop etc.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-skills" class="animate-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                        <h2>Skills</h2>
+                    </div>
+                </div>
+                <div class="row row-pb-md">
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center center-block">
+                        <svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress-1">
+                            <foreignobject class="node" x="56" y="56" width="50" height="50">
+                                <span>HTML<br>91%</span>
+                            </foreignobject>
+                            <circle class="bg"></circle>
+                            <circle class="fg"></circle>
+                        </svg>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center center-block">
+                        <svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress-2">
+                            <foreignobject class="node" x="52" y="56" width="50" height="50">
+                                <span>CSS<br>89%</span>
+                            </foreignobject>
+                            <circle class="bg"></circle>
+                            <circle class="fg"></circle>
+                        </svg>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center center-block">
+                        <svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress-3">
+                            <foreignobject class="node" x="52" y="56" width="50" height="50">
+                                <span>PHP<br>87%</span>
+                            </foreignobject>
+                            <circle class="bg"></circle>
+                            <circle class="fg"></circle>
+                        </svg>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 text-center center-block">
+                        <svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress-4">
+                            <foreignobject class="node" x="47" y="56" width="68" height="50">
+                                <span>SYMFONY<br>85%</span>
+                            </foreignobject>
+                            <circle class="bg"></circle>
+                            <circle class="fg"></circle>
+                        </svg>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">GIT</span><span class="value-right">85%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">JavaScript</span><span class="value-right">84%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="width:84%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">MYSQL</span><span class="value-right">84%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="width:84%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">Restful API's</span><span class="value-right">83%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" style="width:83%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">MSSQL</span><span class="value-right">82%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width:82%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">TailwindCSS</span><span class="value-right">81%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width:81%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">BootstrapCSS</span><span class="value-right">80%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">PostgreSQL</span><span class="value-right">80%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">FoundationCSS</span><span class="value-right">80%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">NodeJS</span><span class="value-right">78%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width:78%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">ExpressJS</span><span class="value-right">75%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">VueJS</span><span class="value-right">73%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width:73%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">Angular</span><span class="value-right">71%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width:71%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">MariaDB</span><span class="value-right">67%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width:67%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">MongoDB</span><span class="value-right">67%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width:67%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">Laravel</span><span class="value-right">65%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width:65%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">VB.Net</span><span class="value-right">45%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:45%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">React</span><span class="value-right">35%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width:35%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">Typescript</span><span class="value-right">30%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width:30%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">Python</span><span class="value-right">25%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-wrap">
+                            <h3><span class="name-left">Java</span><span class="value-right">20%</span></h3>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Portfolio -->
+        <div id="fh5co-started" class="fh5co-bg-dark">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                        <h2>Hire Me!</h2>
+                        <p>If you need any advice on a consultancy level or want to collaborate on any work, please feel
+                            free to reach our at any time.</p>
+                        <p><a href="#contact-us-section" class="btn btn-default btn-lg">Contact Me!</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-consult">
+            <div class="video fh5co-video" style="background-image: url({{ asset('images/cover_bg_1.jpg') }});">
+                <div class="overlay"></div>
+            </div>
+            <div class="choose animate-box">
+                <h2 id="contact-us-section">Contact</h2>
+                {% include 'contact_us/index.html.twig' %}
+            </div>
+        </div>
+        <!-- Add GoogleMAP -->
+    </div>
+    <div id="fh5co-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>&copy; {{ "now"|date("Y") }} Joseph James Smyth Portfolio and Resume
+                        <br>
+                        Please feel free to reach out at anytime!: <a href="#contact-us-section">Say Hello!</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+{% endblock %}
+{% block importmap %}
+    {{ importmap(['app_homepage', 'app_contact_us']) }}
+{% endblock %}
