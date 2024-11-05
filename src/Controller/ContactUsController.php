@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ContactUs;
+use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class ContactUsController extends AbstractController
 {
     #[Route('/contact-us', name: 'app_contact_us', methods: ['POST'])]
-    public function contactUs(Request $request, EntityManagerInterface $entityManager): JsonResponse
+    public function contactUs(Request $request, EntityManagerInterface $entityManager, DateTimeInterface $dateTime): JsonResponse
     {
 
         // Get the post data
@@ -37,6 +38,7 @@ class ContactUsController extends AbstractController
         $contactUsForm->setEmail($postData['contact_us_email']);
         $contactUsForm->setSubject($postData['contact_us_subject']);
         $contactUsForm->setMessage($postData['contact_us_message']);
+        $contactUsForm->setCreatedAt($dateTime);
 
         // Save and flush
         $entityManager->persist($contactUsForm);
