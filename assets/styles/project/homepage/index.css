@@ -1322,9 +1322,12 @@ h1, h2, h3, h4, h5, h6, figure {
     border: 2px solid rgba(0, 0, 0, 0.8);
 }
 
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], select {
     height: 50px;
+    color: #7e868e !important;
 }
+
+
 
 .form-group {
     margin-bottom: 30px;
@@ -2782,10 +2785,6 @@ h1, h2, h3, h4, h5, h6, figure {
 .form-control:focus, .form-control:active {
     box-shadow: none;
     border: 2px solid rgba(0, 0, 0, 0.8);
-}
-
-input[type="text"] {
-    height: 50px;
 }
 
 .form-group {

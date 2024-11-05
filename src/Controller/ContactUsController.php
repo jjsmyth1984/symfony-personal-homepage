@@ -23,10 +23,15 @@ class ContactUsController extends AbstractController
             return new JsonResponse(['success' => false, 'message' => 'No post data submitted']);
         }
 
+        // Honeypot should not be passed from the frontend and should also not have a value
+        if(isset($postData['contact_us_honey_pot']) && !$postData['contact_us_honey_pot']) {
+            return new JsonResponse(['success' => false, 'message' => 'Honeypot isset and has a value which is incorrect']);
+        }
+
         // Instantiate contact us form
         $contactUsForm = new ContactUs();
 
-        // Make contact us post value assignments
+        // Make contact us post-value assignments
         $contactUsForm->setFirstname($postData['contact_us_firstname']);
         $contactUsForm->setsurname($postData['contact_us_surname']);
         $contactUsForm->setEmail($postData['contact_us_email']);

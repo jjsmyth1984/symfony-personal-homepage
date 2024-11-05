@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\ContactUs;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,52 +20,68 @@ class ContactUsType extends AbstractType
                 array(
                     "label" => " ",
                     "required" => true,
-                    "attr" => array(
+                    "attr" => [
                         "placeholder" => "Your firstname",
                         "class" => "form-control",
                         "id" => "",
                         "maxlength" => "55"
-                    )
+                    ]
                 )
             )
             ->add("surname", TextType::class,
                 array(
                     "label" => " ",
                     "required" => true,
-                    "attr" => array(
+                    "attr" => [
                         "placeholder" => "Your surname",
                         "class" => "form-control",
                         "id" => "",
                         "maxlength" => "55"
-                    )
+                    ]
                 )
             )
             ->add("email", EmailType::class,
                 array(
                     "label" => "Email",
                     "required" => false,
-                    "attr" => array(
+                    "attr" => [
                         "placeholder" => "Your email",
                         "class" => "form-control",
                         "id" => ""
-                    ),
+                    ],
                 )
             )
-            ->add("subject", TextType::class,
+            ->add("subject", ChoiceType::class,
                 array(
-                    "label" => " ",
+                    "label" => "",
                     "required" => true,
-                    "attr" => array(
-                        "placeholder" => "Email subject",
+                    "choices" => [
+                        "Please select a subject" => "",
+                        "Support enquiry" => "Support enquiry",
+                        "Billing enquiry" => "Billing enquiry",
+                        "General enquiry" => "General enquiry"
+                    ],
+                    "expanded" => false,
+                    "multiple" => false,
+                    "placeholder" => false,
+                    "attr" => [
+                        "placeholder" => "Please select a subject",
                         "class" => "form-control",
                         "id" => ""
-                    )
+                    ],
                 )
             )
             ->add('message', TextareaType::class, [
-                'label' => 'Description',
-                'attr' => ['rows' => 30, 'cols' => 100, 'class' => 'form-control', 'placeholder' => "Say something about us"],
-            ]);
+                    'label' => 'Description',
+                    'attr' => [
+                        'rows' => 30,
+                        'cols' => 100,
+                        'class' => 'form-control',
+                        'placeholder' =>
+                            'Say something about us'
+                    ],
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
