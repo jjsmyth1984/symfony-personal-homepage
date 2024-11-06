@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, h6, figure {
     background: #FF9000;
 }
 
-.circular-progress-1, .circular-progress-2, .circular-progress-3, .circular-progress-4 {
+.circular-progress-1 {
     --size: 160px;
     --half-size: calc(var(--size) / 2);
     --stroke-width: 5px;
@@ -102,6 +102,36 @@ h1, h2, h3, h4, h5, h6, figure {
     --circumference: calc(var(--radius) * pi * 2);
     --dash: calc((var(--progress) * var(--circumference)) / 100);
     animation: progress-animation-1 5s linear 0s 1 forwards;
+}
+
+.circular-progress-2 {
+    --size: 160px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 5px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * pi * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+    animation: progress-animation-2 5s linear 0s 1 forwards;
+}
+
+.circular-progress-3 {
+    --size: 160px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 5px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * pi * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+    animation: progress-animation-3 5s linear 0s 1 forwards;
+}
+
+.circular-progress-4 {
+    --size: 160px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 5px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * pi * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+    animation: progress-animation-4 5s linear 0s 1 forwards;
 }
 
 .circular-progress-1 circle {
@@ -9568,4 +9598,12 @@ Copyright (c) 2015 Daniel Eden
 .slideOutUp {
     -webkit-animation-name: slideOutUp;
     animation-name: slideOutUp;
+}
+
+.svg-container {
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
