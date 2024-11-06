@@ -30,6 +30,7 @@ jobs:
     - name: Make new .env file for testing purposes
       uses: SpicyPizza/create-envfile@v1
       with:
+        envkey_DATABASE_URL: "postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"
         file_name: .env
     - name: Cache Composer packages
       id: composer-cache
