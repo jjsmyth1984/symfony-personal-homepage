@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContactUsRepository;
 use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactUsRepository::class)]
@@ -29,8 +30,8 @@ class ContactUs
     #[ORM\Column(length: 1500)]
     private ?string $message = null;
 
-    #[ORM\Column]
-    private ?DateTimeInterface $createdAt = null;
+    #[ORM\Column(length: 125)]
+    private ?string $createdAt = null;
 
     public function getId(): ?int
     {
@@ -97,12 +98,12 @@ class ContactUs
         return $this;
     }
 
-    public function getCreatedAt(): ?DateTimeInterface
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?DateTimeInterface $createdAt): void
+    public function setCreatedAt(?string $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
