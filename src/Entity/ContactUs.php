@@ -24,10 +24,10 @@ class ContactUs
     #[ORM\Column(length: 125)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 125)]
     private ?string $subject = null;
 
-    #[ORM\Column(length: 1500)]
+    #[ORM\Column(length: 10000)]
     private ?string $message = null;
 
     #[ORM\Column(length: 125)]
