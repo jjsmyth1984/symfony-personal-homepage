@@ -23,11 +23,8 @@ class HomepageControllerTest extends WebTestCase
 
     public function testHomepageResponse(): void
     {
-        // Arrange
 
-        // Act
-
-        // Mock request with bearer token
+        // Mock get request
         $this->client->request('get', '/');
 
         // Actual status code value
