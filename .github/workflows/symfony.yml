@@ -42,7 +42,7 @@ jobs:
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Install Bundles
-      run: composer require symfony/webpack-encore-bundle symfony/ux-turbo symfony/stimulus-bundle  
+      run: composer require symfony/stimulus-bundle  
     - name: Create Database
       run: |
         mkdir -p data
