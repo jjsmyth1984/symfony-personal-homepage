@@ -21,16 +21,17 @@ jobs:
     #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
     # change this to (see https://github.com/shivammathur/setup-php#bookmark-versioning):
     # uses: shivammathur/setup-php@v2
+    - name: Create PHP instance
     - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
       with:
         php-version: '8.3'
     - uses: actions/checkout@v4
     - name: Copy .env.test.local
       run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
-    - name: Make new .env file for testing purposes
+    - name: Create new .env file with DATABASE_URL variable for testing purposes
       uses: SpicyPizza/create-envfile@v1
       with:
-        envkey_DATABASE_URL: "postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"
+        DATABASE_URL: "postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"
         file_name: .env
     - name: Cache Composer packages
       id: composer-cache
@@ -40,11 +41,11 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
-    - name: Install Dependencies
+    - name: Install Symfony including dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Install Bundles
+    - name: Install Symfony Bundles
       run: composer require symfony/stimulus-bundle  
-    - name: Create Database
+    - name: Create test Symfony Database
       run: |
         mkdir -p data
         touch data/database.sqlite
