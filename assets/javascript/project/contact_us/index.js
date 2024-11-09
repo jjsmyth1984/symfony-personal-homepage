@@ -31,31 +31,23 @@ document.querySelector("form#contact-us-form").addEventListener("submit", event 
     }
 
     // Validation passed and posting form data
-    postFormData(data, postUrl, method);
+    fetch(postUrl, {
+            method: method,
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify(data),
+        }
+    )
+        .then(res => res.json())
+        .then(data => {
+            // Reload page if successful
+            location.reload();
+        })
+        .catch(error => {
+                // Show the error message if unsuccessful
+                console.log(error)
+            }
+        )
 
 });
-
-/**
- *
- * @param data
- * @param postUrl
- * @param method
- * @returns {Promise<any>}
- */
-let postFormData = async function (data, postUrl, method) {
-
-    let headers = {
-        'Content-type': 'application/json; charset=UTF-8'
-    };
-
-    let request = {
-        method: method,
-        body: JSON.stringify(data),
-        headers
-    };
-
-    let page = await fetch(postUrl, request);
-
-    return await page.json();
-
-};

@@ -21,7 +21,7 @@ class HomepageController extends AbstractController
         $contactUsForm = $this->createForm(ContactUsType::class, $contactUs,
             [
                 'action' => $this->generateUrl('app_contact_us'),
-                'method' => 'GET',
+                'method' => 'POST',
                 'attr' => [
                     'id' => 'contact-us-form'
                 ]
