@@ -57,8 +57,8 @@ class ContactUsType extends AbstractType
                     "required" => true,
                     "choices" => [
                         "Please select a subject" => "",
-                        "Support enquiry" => "Support enquiry",
-                        "Billing enquiry" => "Billing enquiry",
+//                        "Support enquiry" => "Support enquiry",
+//                        "Billing enquiry" => "Billing enquiry",
                         "General enquiry" => "General enquiry"
                     ],
                     "expanded" => false,

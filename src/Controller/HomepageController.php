@@ -16,7 +16,17 @@ class HomepageController extends AbstractController
 
         // Instantiate contact us form
         $contactUs = new ContactUs();
-        $contactUsForm = $this->createForm(ContactUsType::class, $contactUs);
+
+        // Create contact us form instance
+        $contactUsForm = $this->createForm(ContactUsType::class, $contactUs,
+            [
+                'action' => $this->generateUrl('app_contact_us'),
+                'method' => 'GET',
+                'attr' => [
+                    'id' => 'contact-us-form'
+                ]
+            ]
+        );
 
         return $this->render('homepage/index.html.twig',
             [

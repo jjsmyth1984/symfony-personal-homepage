@@ -14,6 +14,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class ContactUsController extends AbstractController
 {
     /**
+     * @param Request $request
+     * @param ContactUsForm $contactUsForm
+     * @param MailerInterface $mailerInterface
+     * @param Mailer $mailer
+     * @return JsonResponse
      * @throws TransportExceptionInterface
      */
     #[Route('/contact-us', name: 'app_contact_us', methods: ['POST'])]
