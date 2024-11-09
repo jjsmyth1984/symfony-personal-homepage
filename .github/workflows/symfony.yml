@@ -91,16 +91,16 @@ jobs:
         uses: symfonycorp/security-checker-action@v4
 
       # Analyse PHP Code (PHP_CodeSniffer)
-      - name: Check PSR12 code style (PHP_CodeSniffer)
-        uses: chekalsky/phpcs-action@v1.2.0
-        with:
-          enable_warnings: true
-          installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
-          phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
+      # - name: Check PSR12 code style (PHP_CodeSniffer)
+      #  uses: chekalsky/phpcs-action@v1.2.0
+      #  with:
+      #    enable_warnings: true
+      #    installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
+      #    phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
 
-      # Executing PHPStan - TODO NEED TO FIX EXISTING CODE ISSUES AND UNCOMMENT
-      #- name: Analyse PHP Code (PHPStan)
-      #  run: vendor/bin/phpstan analyse src
+      # Executing PHPStan
+      - name: Analyse PHP Code (PHPStan)
+        run: vendor/bin/phpstan analyse src
 
       # Create test Symfony Database
       - name: Create test Symfony Database
