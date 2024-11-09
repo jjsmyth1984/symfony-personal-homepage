@@ -86,17 +86,17 @@ jobs:
       - name: Install Symfony Bundles
         run: composer require symfony/stimulus-bundle
 
-      # Executing Symfony security checks on installed dependencies
+      # Security checks on installed dependencies
       - name: Security check installed dependencies
         uses: symfonycorp/security-checker-action@v4
 
-      # Analyse PHP Code (PHP_CodeSniffer) - TODO NEED TO FIX EXISTING CODE ISSUES AND UNCOMMENT
-      #- name: Check PSR12 code style (PHP_CodeSniffer)
-      #  uses: chekalsky/phpcs-action@v1.2.0
-      #  with:
-      #    enable_warnings: true
-      #    installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
-      #    phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
+      # Analyse PHP Code (PHP_CodeSniffer)
+      - name: Check PSR12 code style (PHP_CodeSniffer)
+        uses: chekalsky/phpcs-action@v1.2.0
+        with:
+          enable_warnings: true
+          installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
+          phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
 
       # Executing PHPStan - TODO NEED TO FIX EXISTING CODE ISSUES AND UNCOMMENT
       #- name: Analyse PHP Code (PHPStan)
