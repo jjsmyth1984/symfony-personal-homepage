@@ -28,7 +28,7 @@ class HomepageControllerTest extends WebTestCase
         $this->client->request('get', '/');
 
         // Actual status code value
-        $actualStatus = $this->client->getResponse()->getStatusCode();
+        $actualStatus = (string) $this->client->getResponse()->getStatusCode();
 
         // Assert
         $this->assertResponseIsSuccessful(); // Lowest level, confirmation of the route with successful response

@@ -17,10 +17,10 @@ class ContactUsForm
     }
 
     /**
-     * @param $postData
+     * @param array $postData
      * @return void
      */
-    public function saveForm($postData): void
+    public function saveForm(array $postData): void
     {
 
         // Instantiate contact us form
