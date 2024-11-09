@@ -5,50 +5,117 @@
 
 name: Symfony
 
+run-name: ${{ github.actor }} excuting Pulse Beta PHP and Symfony automated tests 🚀
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "staging", "feature/git-hub-actions/symfony" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "staging", "feature/git-hub-actions/symfony" ]
 
 permissions:
   contents: read
 
 jobs:
-  symfony-tests:
-    runs-on: ubuntu-latest
+  symfony:
+    name: Symfony ${{ matrix.symfony-version }} and PHP ${{ matrix.php-version }} lts
+    runs-on: [ ubuntu-latest ] #, [ windows-latest, macos-latest ]
+
+    strategy:
+      fail-fast: true
+      matrix:
+
+        # Assignments
+        php-version:
+          - "8.3"
+          - "8.4"
+        dependency-versions:
+          # - "lowest"
+          - "highest"
+        node-version: [ 19.7.0 ]
+
+        # References only
+        symfony-version: [ 7.1.7 ]
+        composer-version: [ 2.2.1 ]
+        npm-version: [ 9.5.0 ]
+        webpack-version: [ 3.12.2 ]
+        yarn-version: [ 1.22.22 ]
+
     steps:
-    #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
-    # change this to (see https://github.com/shivammathur/setup-php#bookmark-versioning):
-    # uses: shivammathur/setup-php@v2
-    - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
-      with:
-        php-version: '8.3'
-    - uses: actions/checkout@v4
-    - name: Copy .env.test.local
-      run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
-    - name: Create new .env file with DATABASE_URL variable for testing purposes
-      uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        file_name: .env
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-    - name: Install Symfony including dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Install Symfony Bundles
-      run: composer require symfony/stimulus-bundle  
-    - name: Create test Symfony Database
-      run: |
-        mkdir -p data
-        touch data/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
-      run: vendor/bin/phpunit --testdox
+
+      # Install PHP
+      - name: Install PHP ${{ matrix.php-version }} and dependencies
+        uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      # Check out Pulse Beta repository
+      - name: Checkout project repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Install Node.js
+      - name: Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Create an .env file and assign DATABASE_URL variable for testing
+      - name: Create .env file with DATABASE_URL variable for testing purposes
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          file_name: .env
+
+      # Cache Composer packages
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      # Install Symfony including dependencies
+      - name: Install Symfony ${{ matrix.symfony-version }} including dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      # Install Symfony Bundles
+      - name: Install Symfony Bundles
+        run: composer require symfony/stimulus-bundle
+
+      # Executing Symfony security checks on installed dependencies - TODO NEED TO FIX EXISTING SECURITY ISSUES AND UNCOMMENT
+      #- name: Security check installed dependencies
+      #  uses: symfonycorp/security-checker-action@v4
+
+      # Analyse PHP Code (PHP_CodeSniffer) - TODO NEED TO FIX EXISTING CODE ISSUES AND UNCOMMENT
+      #- name: Check PSR12 code style (PHP_CodeSniffer)
+      #  uses: chekalsky/phpcs-action@v1.2.0
+      #  with:
+      #    enable_warnings: true
+      #    installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
+      #    phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
+
+      # Executing PHPStan - TODO NEED TO FIX EXISTING CODE ISSUES AND UNCOMMENT
+      #- name: Analyse PHP Code (PHPStan)
+      #  run: vendor/bin/phpstan analyse src
+
+      # Create test Symfony Database
+      - name: Create test Symfony Database
+        run: |
+          mkdir -p data
+          touch data/database.sqlite
+
+      # Symfony console checks
+      - name: Check the Symfony console
+        run: |
+          php bin/console -V
+          php bin/console about    
+
+      # Execute unit tests
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
+        run: vendor/bin/phpunit --testdox
