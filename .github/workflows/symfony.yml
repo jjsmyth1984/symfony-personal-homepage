@@ -32,7 +32,7 @@ jobs:
         dependency-versions:
           # - "lowest"
           - "highest"
-        node-version: [ 19.7.0 ]
+        node-version: [ 20.17.0 ]
 
         # References only
         symfony-version: [ 7.1.7 ]

@@ -12,9 +12,7 @@ class ContactUsForm
     /**
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(public EntityManagerInterface $entityManager)
-    {
-    }
+    public function __construct(public EntityManagerInterface $entityManager){}
 
     /**
      * @param array $postData
