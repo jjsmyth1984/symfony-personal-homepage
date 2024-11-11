@@ -16,58 +16,56 @@ class ContactUsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add("firstname", TextType::class,
+            ->add('firstname', TextType::class,
                 array(
-                    "label" => " ",
-                    "required" => true,
-                    "attr" => [
-                        "placeholder" => "Your firstname",
-                        "class" => "form-control",
-                        "id" => "",
-                        "maxlength" => "55"
+                    'label' => ' ',
+                    'required' => true,
+                    'attr' => [
+                        'placeholder' => 'Your firstname',
+                        'class' => 'form-control',
+                        'maxlength' => '55',
+                        'aria-label' => 'firstname'
                     ]
                 )
             )
-            ->add("surname", TextType::class,
+            ->add('surname', TextType::class,
                 array(
-                    "label" => " ",
-                    "required" => true,
-                    "attr" => [
-                        "placeholder" => "Your surname",
-                        "class" => "form-control",
-                        "id" => "",
-                        "maxlength" => "55"
+                    'label' => ' ',
+                    'required' => true,
+                    'attr' => [
+                        'placeholder' => 'Your surname',
+                        'class' => 'form-control',
+                        'maxlength' => '55',
+                        'aria-label' => 'surname'
                     ]
                 )
             )
-            ->add("email", EmailType::class,
+            ->add('email', EmailType::class,
                 array(
-                    "label" => "Email",
-                    "required" => false,
-                    "attr" => [
-                        "placeholder" => "Your email",
-                        "class" => "form-control",
-                        "id" => ""
+                    'label' => 'Email',
+                    'required' => false,
+                    'attr' => [
+                        'placeholder' => 'Your email',
+                        'class' => 'form-control',
+                        'aria-label' => 'email'
                     ],
                 )
             )
-            ->add("subject", ChoiceType::class,
+            ->add('subject', ChoiceType::class,
                 array(
-                    "label" => "",
-                    "required" => true,
-                    "choices" => [
-                        "Please select a subject" => "",
-//                        "Support enquiry" => "Support enquiry",
-//                        "Billing enquiry" => "Billing enquiry",
-                        "General enquiry" => "General enquiry"
+                    'label' => '',
+                    'required' => true,
+                    'choices' => [
+                        'Please select a subject' => '',
+                        'General enquiry' => 'General enquiry'
                     ],
-                    "expanded" => false,
-                    "multiple" => false,
-                    "placeholder" => false,
-                    "attr" => [
-                        "placeholder" => "Please select a subject",
-                        "class" => "form-control",
-                        "id" => ""
+                    'expanded' => false,
+                    'multiple' => false,
+                    'placeholder' => false,
+                    'attr' => [
+                        'placeholder' => 'Please select a subject',
+                        'class' => 'form-control',
+                        'aria-label' => 'subject'
                     ],
                 )
             )
@@ -77,6 +75,7 @@ class ContactUsType extends AbstractType
                         'rows' => 30,
                         'cols' => 100,
                         'class' => 'form-control',
+                        'aria-label' => 'message',
                         'placeholder' =>
                             'Say something about us'
                     ],
