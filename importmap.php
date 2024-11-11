@@ -39,6 +39,9 @@ return [
     '@popperjs/core' => [
         'version' => '2.11.8',
     ],
+    'animate.css' => [
+        'version' => '4.1.1',
+    ],
     'rafl' => [
         'version' => '1.2.2',
     ],
