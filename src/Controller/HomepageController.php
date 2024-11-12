@@ -13,27 +13,28 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function index(): Response
     {
-
         // Instantiate contact us form
         $contactUs = new ContactUs();
 
         // Create contact us form instance
-        $contactUsForm = $this->createForm(ContactUsType::class, $contactUs,
+        $contactUsForm = $this->createForm(
+            ContactUsType::class,
+            $contactUs,
             [
                 'action' => $this->generateUrl('app_contact_us'),
                 'method' => 'POST',
                 'attr' => [
-                    'id' => 'contact-us-form'
-                ]
+                    'id' => 'contact-us-form',
+                ],
             ]
         );
 
-        return $this->render('homepage/index.html.twig',
+        return $this->render(
+            'homepage/index.html.twig',
             [
                 'controller_name' => 'HomepageController',
-                "contactUsForm" => $contactUsForm->createView(),
+                'contactUsForm' => $contactUsForm->createView(),
             ]
         );
     }
-
 }

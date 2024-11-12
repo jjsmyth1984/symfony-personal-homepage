@@ -16,48 +16,56 @@ class ContactUsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstname', TextType::class,
-                array(
+            ->add(
+                'firstname',
+                TextType::class,
+                [
                     'label' => ' ',
                     'required' => true,
                     'attr' => [
                         'placeholder' => 'Your firstname',
                         'class' => 'form-control',
                         'maxlength' => '55',
-                        'aria-label' => 'firstname'
-                    ]
-                )
+                        'aria-label' => 'firstname',
+                    ],
+                ]
             )
-            ->add('surname', TextType::class,
-                array(
+            ->add(
+                'surname',
+                TextType::class,
+                [
                     'label' => ' ',
                     'required' => true,
                     'attr' => [
                         'placeholder' => 'Your surname',
                         'class' => 'form-control',
                         'maxlength' => '55',
-                        'aria-label' => 'surname'
-                    ]
-                )
+                        'aria-label' => 'surname',
+                    ],
+                ]
             )
-            ->add('email', EmailType::class,
-                array(
+            ->add(
+                'email',
+                EmailType::class,
+                [
                     'label' => 'Email',
                     'required' => false,
                     'attr' => [
                         'placeholder' => 'Your email',
                         'class' => 'form-control',
-                        'aria-label' => 'email'
+                        'aria-label' => 'email',
                     ],
-                )
+                ]
             )
-            ->add('subject', ChoiceType::class,
-                array(
+            ->add(
+                'subject',
+                ChoiceType::class,
+                [
                     'label' => '',
                     'required' => true,
                     'choices' => [
                         'Please select a subject' => '',
-                        'General enquiry' => 'General enquiry'
+                        'General enquiry' => 'General enquiry',
                     ],
                     'expanded' => false,
                     'multiple' => false,
@@ -65,19 +73,21 @@ class ContactUsType extends AbstractType
                     'attr' => [
                         'placeholder' => 'Please select a subject',
                         'class' => 'form-control',
-                        'aria-label' => 'subject'
+                        'aria-label' => 'subject',
                     ],
-                )
+                ]
             )
-            ->add('message', TextareaType::class, [
+            ->add(
+                'message',
+                TextareaType::class,
+                [
                     'label' => 'Description',
                     'attr' => [
                         'rows' => 30,
                         'cols' => 100,
                         'class' => 'form-control',
                         'aria-label' => 'message',
-                        'placeholder' =>
-                            'Say something about us'
+                        'placeholder' => 'Say something about us',
                     ],
                 ]
             );
@@ -94,7 +104,7 @@ class ContactUsType extends AbstractType
                 'csrf_field_name' => '_token',
                 // an arbitrary string used to generate the value of the token
                 // using a different string for each form improves its security
-                'csrf_token_id' => 'contact_us_token'
+                'csrf_token_id' => 'contact_us_token',
             ]
         );
     }

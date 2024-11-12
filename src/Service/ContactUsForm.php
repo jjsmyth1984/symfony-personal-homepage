@@ -2,27 +2,17 @@
 
 namespace App\Service;
 
-use DateTime;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\ContactUs;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ContactUsForm
 {
-
-    /**
-     * @param EntityManagerInterface $entityManager
-     */
     public function __construct(public EntityManagerInterface $entityManager)
     {
     }
 
-    /**
-     * @param $postData
-     * @return void
-     */
     public function saveForm($postData): void
     {
-
         // Instantiate contact us form
         $contactUsForm = new ContactUs();
 
@@ -34,14 +24,12 @@ class ContactUsForm
         $contactUsForm->setMessage($postData['contact_us_message']);
 
         // Getting now() date and time
-        $dateTime = new DateTime();
+        $dateTime = new \DateTime();
         $dateTimeFormat = $dateTime->format('Y-m-d H:i:s');
         $contactUsForm->setCreatedAt($dateTimeFormat);
 
         // Save and flush
         $this->entityManager->persist($contactUsForm);
         $this->entityManager->flush();
-
     }
-
 }
