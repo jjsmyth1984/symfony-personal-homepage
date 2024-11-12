@@ -7,9 +7,9 @@ name: Symfony
 
 on:
   push:
-    branches: [ "main", "staging" ]
+    branches: [ "main", "staging", "feature/workflows/symfony" ]
   pull_request:
-    branches: [ "main", "staging" ]
+    branches: [ "main", "staging", "feature/workflows/symfony" ]
 
 permissions:
   contents: read
