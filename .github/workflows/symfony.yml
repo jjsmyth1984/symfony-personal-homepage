@@ -5,6 +5,8 @@
 
 name: Symfony
 
+run-name: ${{ github.actor }} excuting Pulse Beta PHP and Symfony automated tests 🚀
+
 on:
   push:
     branches: [ "main", "staging", "feature/workflows/symfony" ]
