@@ -97,7 +97,7 @@ jobs:
         with:
           enable_warnings: true
           installed_paths: '${{ github.workspace }}/vendor/squizlabs/php_codesniffer'
-          phpcs_bin_path: './vendor/bin/phpcs --standard=PSR12 src --ignore="Migrations/"'
+          phpcs_bin_path: './vendor/bin/phpcs --standard=PSR12 src tests --ignore="tests/bootstrap.php"'
 
       # Executing PHPStan
       - name: Analyse PHP Code (PHPStan)
