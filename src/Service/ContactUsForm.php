@@ -2,20 +2,10 @@
 
 namespace App\Service;
 
-use App\Entity\ContactUs;
-use Doctrine\ORM\EntityManagerInterface;
-
 class ContactUsForm
 {
-    public function __construct(public EntityManagerInterface $entityManager)
+    public function updateForm(object $contactUsForm, array $postData): object
     {
-    }
-
-    public function saveForm($postData): void
-    {
-        // Instantiate contact us form
-        $contactUsForm = new ContactUs();
-
         // Make contact us post-value assignments
         $contactUsForm->setFirstname($postData['contact_us_firstname']);
         $contactUsForm->setSurname($postData['contact_us_surname']);
@@ -28,8 +18,6 @@ class ContactUsForm
         $dateTimeFormat = $dateTime->format('Y-m-d H:i:s');
         $contactUsForm->setCreatedAt($dateTimeFormat);
 
-        // Save and flush
-        $this->entityManager->persist($contactUsForm);
-        $this->entityManager->flush();
+        return $contactUsForm;
     }
 }

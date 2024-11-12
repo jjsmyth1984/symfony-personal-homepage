@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactUs;
 use App\Model\Mailer;
 use App\Service\ContactUsForm;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +19,7 @@ class ContactUsController extends AbstractController
      * @throws TransportExceptionInterface
      */
     #[Route('/contact-us', name: 'app_contact_us', methods: ['POST'])]
-    public function contactUs(Request $request, ContactUsForm $contactUsForm, MailerInterface $mailerInterface, Mailer $mailer): JsonResponse
+    public function contactUs(Request $request, ContactUsForm $contactUsForm, MailerInterface $mailerInterface, Mailer $mailer, EntityManagerInterface $entityManager): JsonResponse
     {
         // Get the posted data
         $postData = json_decode($request->getContent(), true);
@@ -32,8 +34,15 @@ class ContactUsController extends AbstractController
             return new JsonResponse(['success' => false, 'message' => 'Honeypot isset and has a value which is incorrect']);
         }
 
+        // Instantiate contact us form
+        $contactUsFormObject = new ContactUs();
+
         // Process and save form data
-        $contactUsForm->saveForm($postData);
+        $contactUsFormObject = $contactUsForm->updateForm($contactUsFormObject, $postData);
+
+        // Save and flush
+        $entityManager->persist($contactUsFormObject);
+        $entityManager->flush();
 
         // Send email to owner
         $mailer->sendEmail($mailerInterface);

@@ -17,10 +17,10 @@ class HomepageControllerTest extends WebTestCase
     public function testHomepageResponse(): void
     {
         // Mock get request
-        $this->client->request('get', '/');
+        $this->client->request('GET', '/');
 
         // Actual status code value
-        $actualStatus = $this->client->getResponse()->getStatusCode();
+        $actualStatus = (string) $this->client->getResponse()->getStatusCode();
 
         // Assert
         $this->assertResponseIsSuccessful(); // Lowest level, confirmation of the route with successful response

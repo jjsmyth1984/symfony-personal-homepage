@@ -11,7 +11,7 @@ class ContactUs
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    public ?int $id;
 
     #[ORM\Column(length: 55)]
     private ?string $firstname = null;
