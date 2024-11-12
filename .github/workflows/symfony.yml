@@ -99,8 +99,8 @@ jobs:
       #    phpcs_bin_path: './vendor/bin/phpcs src --ignore="Migrations/"'
 
       # Executing PHPStan
-      # - name: Analyse PHP Code (PHPStan)
-      #  run: vendor/bin/phpstan analyse src
+      - name: Analyse PHP Code (PHPStan)
+        run: vendor/bin/phpstan analyse src
 
       # Create test Symfony Database
       - name: Create test Symfony Database

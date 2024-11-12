@@ -22,7 +22,7 @@ class ContactUsController extends AbstractController
     public function contactUs(Request $request, ContactUsForm $contactUsForm, MailerInterface $mailerInterface, Mailer $mailer, EntityManagerInterface $entityManager): JsonResponse
     {
         // Get the posted data
-        $postData = json_decode($request->getContent(), true);
+        $postData = (array) json_decode($request->getContent(), true);
 
         // If the posted data is empty, return failed response
         if (!$postData) {

@@ -4,6 +4,9 @@ namespace App\Service;
 
 class ContactUsForm
 {
+    /**
+     * @param array<string> $postData
+     */
     public function updateForm(object $contactUsForm, array $postData): object
     {
         // Make contact us post-value assignments
