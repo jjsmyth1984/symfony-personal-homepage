@@ -33,3 +33,7 @@ node_modules
 .idea
 
 !/.env
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
