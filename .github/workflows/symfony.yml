@@ -5,7 +5,7 @@
 
 name: Symfony
 
-run-name: ${{ github.actor }} excuting Pulse Beta PHP and Symfony automated tests 🚀
+run-name: ${{ github.actor }} excuting PHP and Symfony automated tests 🚀
 
 on:
   push:
