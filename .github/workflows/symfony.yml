@@ -9,9 +9,9 @@ run-name: ${{ github.actor }} excuting Pulse Beta PHP and Symfony automated test
 
 on:
   push:
-    branches: [ "main", "staging" ]
+    branches: [ "main", "staging", "feature/code-sniffer/install" ]
   pull_request:
-    branches: [ "main", "staging" ]
+    branches: [ "main", "staging", "feature/code-sniffer/install" ]
 
 permissions:
   contents: read
