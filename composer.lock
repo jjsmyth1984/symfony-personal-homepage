@@ -2013,16 +2013,16 @@
         },
         {
             "name": "sensiolabs/minify-bundle",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/minify-bundle.git",
-                "reference": "8eb1e7b31866dac60d22dd2f30ce496c53b30f36"
+                "reference": "864ada8f36c7f81a642be08e72045bc7a1030e9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/minify-bundle/zipball/8eb1e7b31866dac60d22dd2f30ce496c53b30f36",
-                "reference": "8eb1e7b31866dac60d22dd2f30ce496c53b30f36",
+                "url": "https://api.github.com/repos/sensiolabs/minify-bundle/zipball/864ada8f36c7f81a642be08e72045bc7a1030e9c",
+                "reference": "864ada8f36c7f81a642be08e72045bc7a1030e9c",
                 "shasum": ""
             },
             "require": {
@@ -2082,9 +2082,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sensiolabs/minify-bundle/issues",
-                "source": "https://github.com/sensiolabs/minify-bundle/tree/v0.9.2"
+                "source": "https://github.com/sensiolabs/minify-bundle/tree/v0.9.3"
             },
-            "time": "2024-10-30T23:32:28+00:00"
+            "time": "2024-11-14T18:34:57+00:00"
         },
         {
             "name": "symfony/apache-pack",
