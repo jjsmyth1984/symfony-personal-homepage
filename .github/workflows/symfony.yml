@@ -9,7 +9,7 @@ run-name: ${{ github.actor }} excuting PHP and Symfony automated tests 🚀
 
 on:
   push:
-    branches: [ "main", "staging", "feature/git-hub-actions/auto-deploy" ]
+    branches: [ "main", "staging" ]
 
 permissions:
   contents: read
