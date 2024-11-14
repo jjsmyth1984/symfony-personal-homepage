@@ -18,7 +18,7 @@ https://github.com/jjsmyth1984/symfony-personal-homepage.git
 Using your terminal create an .env by copying the .env.dev file
 
 ```bash
-# Terminal command to copy the .env.dev file to .env
+# Terminal command to copy the .env.template file to .env
 cp .env.template .env 
 ```
 
@@ -27,6 +27,6 @@ cp .env.template .env
 Installing the Symfony project
 
 ```bash
-# Terminal command to copy the .env.dev file to .env
+# Terminal command to in the symfony project and it's bundles.
 composer install
 ```
