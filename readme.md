@@ -13,7 +13,7 @@ Using your IDE or a platform like Sourcetree close the project repository to you
 https://github.com/jjsmyth1984/symfony-personal-homepage.git
 ```
 
-**2. Clone the .env.dev file to .env**
+**2. Clone the .env.template file to .env**
 
 Using your terminal create an .env by copying the .env.dev file
 
