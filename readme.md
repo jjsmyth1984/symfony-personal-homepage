@@ -19,7 +19,7 @@ Using your terminal create an .env by copying the .env.dev file
 
 ```bash
 # Terminal command to copy the .env.dev file to .env
-cp .env.dev .env 
+cp .env.template .env 
 ```
 
 **3. Execute composer install**
