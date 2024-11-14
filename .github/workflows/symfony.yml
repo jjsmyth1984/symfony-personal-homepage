@@ -143,3 +143,4 @@ jobs:
           private-ssh-key: ${{ secrets.SSH_KEY }}
           ssh-port: ${{ secrets.SSH_PORT }}
           destination-path: ${{ secrets.SSH_PATH }}
+          rsync-options: --dry-run --archive --verbose --compress --delete-after --human-readable --exclude=.git* --exclude=.git/ --exclude=README.md --exclude=readme.md --exclude=.gitignore
