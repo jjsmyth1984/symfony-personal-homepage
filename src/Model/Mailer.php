@@ -18,7 +18,7 @@ class Mailer extends AbstractController
         // Email builder
         $email = (new Email())
             ->from($_ENV['MAILER_USERNAME'])
-            ->to($_ENV['SWIFT_MAILER_USERNAME'])
+            ->to($_ENV['MAILER_USERNAME'])
             ->subject('Time for Symfony Mailer!')
             ->text('Sending emails is fun again!')
             ->html('<p>See Twig integration for better HTML integration!</p>');
