@@ -9,7 +9,9 @@ run-name: ${{ github.actor }} excuting PHP and Symfony automated tests and dploy
 
 on:
   push:
-    branches: [ "main", "staging" ]
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
 
 permissions:
   contents: read
