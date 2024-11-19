@@ -122,25 +122,25 @@ jobs:
         run: vendor/bin/phpunit --testdox
 
   # Auto web deploy job
-  web-deploy:
-    name: Auto FTP Deploy
-    runs-on: ubuntu-latest
-    needs: symfony-build-test
-    if: github.ref == 'refs/heads/main'
-    environment: production
-    steps:
-
-      # Check out project repository
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
-
-      # Auto deploy code via FTP
-      - name: 📂 Deploy update files
-        uses: SamKirkland/web-deploy@v1
-        with:
-          target-server: ${{ secrets.SERVER_IP }}
-          remote-user: ${{ secrets.SSH_USER }}
-          private-ssh-key: ${{ secrets.SSH_KEY }}
-          ssh-port: ${{ secrets.SSH_PORT }}
-          destination-path: ${{ secrets.SSH_PATH }}
-          rsync-options: --dry-run --archive --verbose --compress --delete-after --human-readable --exclude=.git* --exclude=.git/ --exclude=README.md --exclude=readme.md --exclude=.gitignore
+#  web-deploy:
+#    name: Auto FTP Deploy
+#    runs-on: ubuntu-latest
+#    needs: symfony-build-test
+#    if: github.ref == 'refs/heads/main'
+#    environment: production
+#    steps:
+#
+#      # Check out project repository
+#      - name: 🚚 Get latest code
+#        uses: actions/checkout@v4
+#
+#      # Auto deploy code via FTP
+#      - name: 📂 Deploy update files
+#        uses: SamKirkland/web-deploy@v1
+#        with:
+#          target-server: ${{ secrets.SERVER_IP }}
+#          remote-user: ${{ secrets.SSH_USER }}
+#          private-ssh-key: ${{ secrets.SSH_KEY }}
+#          ssh-port: ${{ secrets.SSH_PORT }}
+#          destination-path: ${{ secrets.SSH_PATH }}
+#          rsync-options: --dry-run --archive --verbose --compress --delete-after --human-readable --exclude=.git* --exclude=.git/ --exclude=README.md --exclude=readme.md --exclude=.gitignore
