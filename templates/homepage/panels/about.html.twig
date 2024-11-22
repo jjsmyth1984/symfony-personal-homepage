@@ -8,19 +8,19 @@
         <div class="col-md-4">
             <ul role="list" class="info">
                 <li role="listitem">
-                    <span class="first-block">Full Name:</span><span class="second-block">Joseph James Smyth</span>
+                    <span class="first-block">Full Name:</span><span class="second-block">{{ userAccount.firstname|escape }} {{ userAccount.surname|escape }}</span>
                 </li>
                 <li role="listitem">
-                    <span class="first-block">Location:</span><span class="second-block">Randalstown, N.Ireland</span>
+                    <span class="first-block">Location:</span><span class="second-block">{{ userAccount.location|escape }}</span>
                 </li>
                 <li role="listitem">
-                    <span class="first-block">Email:</span><span class="second-block"><a target="_blank" href="mailto:joe@jjsmyth.net?subject=Website enquiry">joe@jjsmyth.net</a></span>
+                    <span class="first-block">Email:</span><span class="second-block"><a target="_blank" href="mailto:{{ userAccount.email|escape }}?subject=Website enquiry">{{ userAccount.email|escape }}</a></span>
                 </li>
                 <li role="listitem">
-                    <span class="first-block">LinkedIn:</span><span class="second-block"><a target="_blank" href="https://www.linkedin.com/in/joseph-james-smyth-bb509a207/">joseph-james-smyth-bb509a207</a></span>
+                    <span class="first-block">LinkedIn:</span><span class="second-block"><a target="_blank" href="{{ userAccount.linkedin }}">{{ userAccount.linkedin|replace({'https://www.linkedin.com/in/': ''})|escape }}</a></span>
                 </li>
                 <li>
-                    <span class="first-block">GitHub:</span><span class="second-block"><a target="_blank" href="https://github.com/jjsmyth1984">jjsmyth1984</a></span>
+                    <span class="first-block">GitHub:</span><span class="second-block"><a target="_blank" href="{{ userAccount.github }}">{{ userAccount.github|replace({'https://github.com/': ''})|escape }}</a></span>
                 </li>
             </ul>
         </div>
