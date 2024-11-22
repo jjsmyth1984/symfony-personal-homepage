@@ -27,6 +27,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 55)]
     private ?string $surname = null;
 
+    #[ORM\Column(name: 'job_title', length: 125)]
+    private ?string $jobTitle = null;
+
     #[ORM\Column(length: 225, nullable: true)]
     private ?string $location = null;
 
@@ -216,5 +219,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastUpdatedAt(?object $lastUpdatedAt): void
     {
         $this->lastUpdatedAt = $lastUpdatedAt;
+    }
+
+    public function getJobTitle(): ?string
+    {
+        return $this->jobTitle;
+    }
+
+    public function setJobTitle(?string $jobTitle): void
+    {
+        $this->jobTitle = $jobTitle;
     }
 }

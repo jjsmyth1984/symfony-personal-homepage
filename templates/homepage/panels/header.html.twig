@@ -1,0 +1,20 @@
+<div class="overlay"></div>
+<div id="user-profile">
+    <div class="display-t js-fullheight">
+        <div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+            <div class="profile-thumb" style="background: url({{ asset('images/user-3.jpg') }});"></div>
+            <div class="profile-name text-center">
+                <h1><span>{{ userAccount.firstname|escape }} {{ userAccount.surname|escape }}</span></h1>
+                <h2 class="mb-4"><span>{{ userAccount.jobTitle|escape }}</span></h2>
+                <ul role="list" class="fh5co-social-icons">
+                    {# <li><a href="#"><i class="icon-twitter2"></i></a></li> #}
+                    {# <li><a href="#"><i class="icon-facebook2"></i></a></li> #}
+                    <li>
+                        <a aria-label="linkedin" target="_blank" href="{{ userAccount.linkedin|escape }}"><i class="icon-linkedin2"></i></a>
+                    </li>
+                    {# <li role="listitem"><a href="#"><i class="icon-dribbble2"></i></a></li> #}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,18 +1,35 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\ContactUs;
+use App\Entity\User;
 use App\Form\ContactUsType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class HomepageController extends AbstractController
 {
+    /**
+     * @throws \Exception
+     */
     #[Route('/', name: 'app_homepage')]
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        // Get account details
+        $userAccount = $entityManager->getRepository(User::class)->findAll();
+
+        if (1 !== count($userAccount)) {
+            throw new \Exception('Error, incorrect user account count returned.');
+        }
+
+        // Clean user account assignment
+        $userAccount = $userAccount[0];
+
         // Instantiate contact us form
         $contactUs = new ContactUs();
 
@@ -32,8 +49,8 @@ class HomepageController extends AbstractController
         return $this->render(
             'homepage/index.html.twig',
             [
-                'controller_name' => 'HomepageController',
                 'contactUsForm' => $contactUsForm->createView(),
+                'userAccount' => $userAccount,
             ]
         );
     }
