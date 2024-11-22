@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    <div id="fh5co-consult">
+
+        <div class="choose animate-box">
+
+            <h2 id="contact-us-section">Registration</h2>
+
+            {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm) }}
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                    {{ form_errors(registrationForm.firstname) }}
+                    {{ form_row(registrationForm.firstname) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                    {{ form_errors(registrationForm.surname) }}
+                    {{ form_row(registrationForm.surname) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                    {{ form_errors(registrationForm.email) }}
+                    {{ form_row(registrationForm.email) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                    {{ form_errors(registrationForm.plainPassword) }}
+                    {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-md-6">
+                    {{ form_errors(registrationForm.agreeTerms) }}
+                    {{ form_row(registrationForm.agreeTerms) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input id="contact-us" type="submit" value="Register" class="btn btn-primary">
+            </div>
+
+            {{ form_rest(registrationForm) }}
+            {{ form_end(registrationForm) }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+{% endblock %}
+{% block importmap %}
+    {{ importmap(['app_homepage', 'app_contact_us']) }}
+{% endblock %}

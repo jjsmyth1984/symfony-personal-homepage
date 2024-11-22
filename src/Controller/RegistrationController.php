@@ -3,28 +3,56 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\RegistrationFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/registration', name: 'app_registration')]
-    public function index(UserPasswordHasherInterface $passwordHasher): Response
-    {
-
+    #[Route('/register', name: 'app_register')]
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager,
+    ): Response {
         $user = new User();
-        $plaintextPassword = '';
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
 
-        $hashedPassword = $passwordHasher->hashPassword(
-            $user,
-            $plaintextPassword
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var string $plainPassword */
+            $plainPassword = $form->get('plainPassword')->getData();
+
+            // encode the plain password
+            $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+
+            /** @var string $firstname */
+            $firstname = $form->get('firstname')->getData();
+            $user->setFirstname($firstname);
+
+            /** @var string $surname */
+            $surname = $form->get('surname')->getData();
+            $user->setSurname($surname);
+
+            // Set date and time
+            $createdAt = new \DateTime();
+            $user->setCreatedAt($createdAt);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_contact_us');
+        }
+
+        return $this->render(
+            'registration/register.html.twig',
+            [
+                'registrationForm' => $form,
+            ]
         );
-        $user->setPassword($hashedPassword);
-
-        return $this->render('registration/index.html.twig', [
-            'controller_name' => 'RegistrationController',
-        ]);
     }
 }
