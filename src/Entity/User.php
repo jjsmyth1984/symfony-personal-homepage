@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -16,6 +21,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public function __construct()
+    {
+        $this->workExperience = new ArrayCollection();
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -48,11 +58,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $email = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $aboutMe = null;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $philosophy = null;
+
+    /** @var Collection<int, WorkExperience> */
+    #[ORM\OneToMany(targetEntity: WorkExperience::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
+    private Collection $workExperience;
 
     #[ORM\Column(name: 'created_at', type: 'datetime')]
     private ?object $createdAt;
@@ -101,6 +115,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @see UserInterface
+     *
      * @return list<string>
      */
     public function getRoles(): array
@@ -255,5 +270,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhilosophy(?string $philosophy): void
     {
         $this->philosophy = $philosophy;
+    }
+
+    /** @return Collection<int, WorkExperience> */
+    public function getWorkExperience(): Collection
+    {
+        return $this->workExperience;
     }
 }

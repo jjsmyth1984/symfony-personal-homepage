@@ -3,7 +3,8 @@
         <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
             <h2>My Resume</h2>
             <div class="custom-btn-group mt-4">
-                <a href="{{ asset('fs/cv/JosephJamesSmythCV.pdf') }}" class="btn mr-lg-2 custom-btn" download="JosephJamesSmythCV.pdf">
+                <a href="{{ asset('fs/cv/JosephJamesSmythCV.pdf') }}" class="btn mr-lg-2 custom-btn"
+                   download="JosephJamesSmythCV.pdf">
                     <i class="uil uil-file-alt"></i>
                     Download Resume
                 </a>
@@ -16,99 +17,24 @@
                 <li class="timeline-heading text-center animate-box">
                     <div><h3>Work Experience</h3></div>
                 </li>
-                <li class="animate-box timeline-unverted">
-                    <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Lead Software Engineer</h3>
-                            <span class="company">Pulse Sales Solutions LTD - March 2022 - Current</span>
+                {% for workExperience in userAccount.workExperience|reverse %}
+                    {% set listPosition = 'animate-box timeline-unverted' %}
+                    {% if (loop.index is even) %}
+                        {% set listPosition = 'animate-box timeline-inverted' %}
+                    {% endif %}
+                    <li class="{{ listPosition|escape }}">
+                        <div class="timeline-badge"><i class="icon-suitcase"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h3 class="timeline-title">{{ workExperience.title|escape }}</h3>
+                                <span class="company">{{ workExperience.business|escape }} - {{ workExperience.startDate|date('F')|escape }} {{ workExperience.startDate|date('Y')|escape }} - {% if loop.first %}Current{% else %}{{ workExperience.endDate|date('F')|escape }} {{ workExperience.endDate|date('Y')|escape }}{% endif %}</span>
+                            </div>
+                            <div class="timeline-body">
+                                <p>{{ workExperience.description|escape }}</p>
+                            </div>
                         </div>
-                        <div class="timeline-body">
-                            <p>Lead project lifecycles, including planning, execution and delivery. Drive
-                                the
-                                development process forward through close collaboration with UX and UI
-                                designers
-                                to create intuitive and effective user interfaces.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted animate-box">
-                    <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Senior Software Engineer</h3>
-                            <span class="company">Pulse Sales Solutions LTD - March 2016 - March 2022</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Monitored application performance metrics and conducted performance testing
-                                to
-                                validate improvements. Crafted clean, modular and maintainable code
-                                following
-                                industry standards and best practices.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="animate-box timeline-unverted">
-                    <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Software Engineer</h3>
-                            <span class="company">Zesty LTD - October 2014 - March 2016</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Worked with product managers and stakeholders to understand project
-                                requirements
-                                and translate into technical solutions. Developed and maintained mortgage
-                                and
-                                loan calculators for a major UK and Ireland bank, ensuring accuracy,
-                                reliability and compliance with financial regulations.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted animate-box">
-                    <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Software Engineer</h3>
-                            <span class="company">Seopa LTD - October 2011 - March 2014</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Integrated with external APIs provided by insurance companies to retrieve
-                                real-time quotes and policy information. Created and maintained integrations
-                                with various insurance providers' APIs to fetch real-time quotes for car,
-                                home,
-                                and health insurance. Documented technical specifications, API endpoints,
-                                and
-                                system architecture for the quotation comparison platform.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="animate-box timeline-unverted">
-                    <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Junior Software Engineer</h3>
-                            <span class="company">Accord IT Solutions LTD - October 2010 - March 2011</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Create custom plugins using Visual Basic to extend the functionality of Sage
-                                accountancy software.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted animate-box">
-                    <div class="timeline-badge"><i class="icon-suitcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Business Owner and Junior Software Engineer</h3>
-                            <span class="company">Seopa LTD - August 2008 - October 2010</span>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Home-based server reseller company specialising in web hosting and website
-                                development.</p>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                {% endfor %}
                 <br>
                 <li class="timeline-heading text-center animate-box">
                     <div><h3>Education</h3></div>
