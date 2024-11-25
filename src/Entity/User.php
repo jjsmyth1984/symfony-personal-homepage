@@ -21,6 +21,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public function __construct()
+    {
+        $this->workExperience = new ArrayCollection();
+        $this->education = new ArrayCollection();
+        $this->expertise = new ArrayCollection();
+        $this->skills = new ArrayCollection();
+    }
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -285,10 +294,56 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->workExperience;
     }
 
+    public function addWorkExperience(WorkExperience $workExperience): self
+    {
+        if (!$this->workExperience->contains($workExperience)) {
+            $this->workExperience[] = $workExperience;
+            // optional but keeps both sides in sync
+            $workExperience->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkExperience(WorkExperience $workExperience): self
+    {
+        if ($this->workExperience->removeElement($workExperience)) {
+            // set the owning side to null (unless already changed)
+            if ($workExperience->getUser() === $this) {
+                $workExperience->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
     /** @return Collection<int, Education> */
     public function getEducation(): Collection
     {
         return $this->education;
+    }
+
+    public function addEducation(Education $education): self
+    {
+        if (!$this->education->contains($education)) {
+            $this->education[] = $education;
+            // optional but keeps both sides in sync
+            $education->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEducation(Education $education): self
+    {
+        if ($this->education->removeElement($education)) {
+            // set the owning side to null (unless already changed)
+            if ($education->getUser() === $this) {
+                $education->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
     /** @return Collection<int, Expertise> */
@@ -297,9 +352,55 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->expertise;
     }
 
+    public function addExpertise(Expertise $expertise): self
+    {
+        if (!$this->expertise->contains($expertise)) {
+            $this->expertise[] = $expertise;
+            // optional but keeps both sides in sync
+            $expertise->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExpertise(Expertise $expertise): self
+    {
+        if ($this->expertise->removeElement($expertise)) {
+            // set the owning side to null (unless already changed)
+            if ($expertise->getUser() === $this) {
+                $expertise->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
     /** @return Collection<int, Skills> */
     public function getSkills(): Collection
     {
         return $this->skills;
+    }
+
+    public function addSkills(Skills $skills): self
+    {
+        if (!$this->skills->contains($skills)) {
+            $this->skills[] = $skills;
+            // optional but keeps both sides in sync
+            $skills->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkills(Skills $skills): self
+    {
+        if ($this->skills->removeElement($skills)) {
+            // set the owning side to null (unless already changed)
+            if ($skills->getUser() === $this) {
+                $skills->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
