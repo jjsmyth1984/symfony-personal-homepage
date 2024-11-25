@@ -48,6 +48,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $email = null;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $aboutMe = null;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $philosophy = null;
+
     #[ORM\Column(name: 'created_at', type: 'datetime')]
     private ?object $createdAt;
 
@@ -229,5 +235,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setJobTitle(?string $jobTitle): void
     {
         $this->jobTitle = $jobTitle;
+    }
+
+    public function getAboutMe(): ?string
+    {
+        return $this->aboutMe;
+    }
+
+    public function setAboutMe(?string $aboutMe): void
+    {
+        $this->aboutMe = $aboutMe;
+    }
+
+    public function getPhilosophy(): ?string
+    {
+        return $this->philosophy;
+    }
+
+    public function setPhilosophy(?string $philosophy): void
+    {
+        $this->philosophy = $philosophy;
     }
 }
