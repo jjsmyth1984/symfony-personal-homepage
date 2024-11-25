@@ -68,6 +68,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: WorkExperience::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
     private Collection $workExperience;
 
+    /** @var Collection<int, Education> */
+    #[ORM\OneToMany(targetEntity: Education::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
+    private Collection $education;
+
     #[ORM\Column(name: 'created_at', type: 'datetime')]
     private ?object $createdAt;
 
@@ -276,5 +280,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getWorkExperience(): Collection
     {
         return $this->workExperience;
+    }
+
+    /** @return Collection<int, Education> */
+    public function getEducation(): Collection
+    {
+        return $this->education;
     }
 }
