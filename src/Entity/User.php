@@ -21,11 +21,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    public function __construct()
-    {
-        $this->workExperience = new ArrayCollection();
-    }
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -71,6 +66,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /** @var Collection<int, Education> */
     #[ORM\OneToMany(targetEntity: Education::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
     private Collection $education;
+
+    /** @var Collection<int, Expertise> */
+    #[ORM\OneToMany(targetEntity: Expertise::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
+    private Collection $expertise;
+
+    /** @var Collection<int, Skills> */
+    #[ORM\OneToMany(targetEntity: Skills::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
+    private Collection $skills;
 
     #[ORM\Column(name: 'created_at', type: 'datetime')]
     private ?object $createdAt;
@@ -286,5 +289,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getEducation(): Collection
     {
         return $this->education;
+    }
+
+    /** @return Collection<int, Expertise> */
+    public function getExpertise(): Collection
+    {
+        return $this->expertise;
+    }
+
+    /** @return Collection<int, Skills> */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
     }
 }

@@ -105,5 +105,4 @@ class Education
     {
         $this->user = $user;
     }
-
 }

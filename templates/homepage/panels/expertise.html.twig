@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="services-padding">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                <h2>Areas of expertise</h2>
+            </div>
+        </div>
+        {% if userAccount.expertise|length == 0 %}
+            <div class="alert alert-danger" role="alert">Please add your expertise</div>
+        {% endif %}
+        <div class="row">
+            {% for expertise in userAccount.expertise|slice(0,3) %}
+            <div class="col-md-4 text-center">
+                <div class="feature-left">
+                <span class="icon">
+                    <i class="icon-{{ expertise.iconCss|escape }}"></i>
+                </span>
+                    <div class="feature-copy">
+                        <h3>{{ expertise.title|escape }}</h3>
+                        <p>{{ expertise.description|escape }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% for expertise in userAccount.expertise|slice(3,6) %}
+            <div class="col-md-4 text-center">
+                <div class="feature-left">
+                <span class="icon">
+                    <i class="icon-{{ expertise.iconCss|escape }}"></i>
+                </span>
+                    <div class="feature-copy">
+                        <h3>{{ expertise.title|escape }}</h3>
+                        <p>{{ expertise.description|escape }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

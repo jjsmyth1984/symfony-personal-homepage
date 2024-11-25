@@ -5,42 +5,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 col-sm-6 text-center">
-            <svg height="250" viewBox="0 0 160 200" class="circular-progress-1" preserveAspectRatio="xMaxYMax meet">
-                <foreignobject class="node" x="56" y="56" width="50" height="50">
-                    <span>HTML<br>91%</span>
-                </foreignobject>
-                <circle class="bg"></circle>
-                <circle class="fg"></circle>
-            </svg>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center">
-            <svg height="250" viewBox="0 0 160 200" class="circular-progress-2" preserveAspectRatio="xMaxYMax meet">
-                <foreignobject class="node" x="52" y="56" width="50" height="50">
-                    <span>CSS<br>89%</span>
-                </foreignobject>
-                <circle class="bg"></circle>
-                <circle class="fg"></circle>
-            </svg>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center">
-            <svg height="250" viewBox="0 0 160 200" class="circular-progress-3" preserveAspectRatio="xMaxYMax meet">
-                <foreignobject class="node" x="52" y="56" width="50" height="50">
-                    <span>PHP<br>87%</span>
-                </foreignobject>
-                <circle class="bg"></circle>
-                <circle class="fg"></circle>
-            </svg>
-        </div>
-        <div class="col-md-3 col-sm-6 text-center">
-            <svg height="250" viewBox="0 0 160 200" class="circular-progress-4" preserveAspectRatio="xMaxYMax meet">
-                <foreignobject class="node" x="47" y="56" width="68" height="50">
-                    <span>SYMFONY<br>85%</span>
-                </foreignobject>
-                <circle class="bg"></circle>
-                <circle class="fg"></circle>
-            </svg>
-        </div>
+        {% if userAccount.skills|length == 0 %}
+            <div class="alert alert-danger" role="alert">Please add your skills</div>
+        {% endif %}
+        {% for skill in userAccount.skills|sort((a, b) => b.percentage <=> a.percentage)|slice(0,4) %}
+            <div class="col-md-3 col-sm-6 text-center">
+                <svg height="250" viewBox="0 0 160 200" class="circular-progress-1" preserveAspectRatio="xMaxYMax meet">
+                    <foreignobject class="node" x="{{ skill.foreignObjectX|escape }}" y="{{ skill.foreignObjectY|escape }}" width="{{ skill.foreignObjectWidth|escape }}" height="{{ skill.foreignObjectHeight|escape }}">
+                        <span>{{ skill.title|upper|escape }}<br>{{ skill.percentage|escape }}%</span>
+                    </foreignobject>
+                    <circle class="bg"></circle>
+                    <circle class="fg"></circle>
+                </svg>
+            </div>
+        {% endfor %}
     </div>
     <div class="row">
         <div class="col-md-4">
