@@ -45,24 +45,23 @@
                 {% if userAccount.education|length == 0 %}
                     <div class="alert alert-danger" role="alert">Please add your education</div>
                 {% endif %}
-                {% for workExperience in userAccount.workExperience|reverse %}
-                {% set listPosition = 'animate-box timeline-unverted' %}
-                {% if (loop.index is even) %}
-                    {% set listPosition = 'animate-box timeline-inverted' %}
-                {% endif %}
-                <li class="{{ listPosition|escape }}">
-                    <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h3 class="timeline-title">Postgraduate Diploma</h3>
-                            <span class="company">Ulster University - 2007 - 2008</span>
+                {% for education in userAccount.education|reverse %}
+                    {% set listPosition = 'animate-box timeline-unverted' %}
+                    {% if (loop.index is even) %}
+                        {% set listPosition = 'animate-box timeline-inverted' %}
+                    {% endif %}
+                    <li class="{{ listPosition|escape }}">
+                        <div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h3 class="timeline-title">{{ education.course|escape }}</h3>
+                                <span class="company">{{ education.institution|escape }} - {{ education.startDate|date('F')|escape }} {{ education.startDate|date('Y')|escape }} - {{ education.endDate|date('F')|escape }} {{ education.endDate|date('Y')|escape }}</span>
+                            </div>
+                            <div class="timeline-body">
+                                <p>{{ education.title|escape }}</p>
+                            </div>
                         </div>
-                        <div class="timeline-body">
-                            <p>Business and Information Innovation.</p>
-                        </div>
-                    </div>
-                </li>
-                {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         </div>
