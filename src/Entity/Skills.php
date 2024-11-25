@@ -33,7 +33,7 @@ class Skills
     #[ORM\Column]
     private ?int $foreignObjectHeight = null;
 
-    #[ManyToOne(targetEntity: User::class, inversedBy: 'education')]
+    #[ManyToOne(targetEntity: User::class, inversedBy: 'skills')]
     #[JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false)]
     private ?User $user;
 

@@ -24,7 +24,7 @@ class Expertise
     #[ORM\Column(length: 55)]
     private ?string $icon_css = null;
 
-    #[ManyToOne(targetEntity: User::class, inversedBy: 'education')]
+    #[ManyToOne(targetEntity: User::class, inversedBy: 'expertise')]
     #[JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false)]
     private ?User $user;
 
