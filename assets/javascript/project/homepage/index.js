@@ -22,7 +22,6 @@ function fadeOut(elem) {
 }
 
 let burgerMenu = document.getElementById('burger-menu');
-
 if(burgerMenu) {
     burgerMenu.addEventListener('click', function (e) {
         let burgerMenuBody = document.getElementById(this.getAttribute('data-bs-target'));
