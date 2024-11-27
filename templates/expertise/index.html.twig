@@ -3,25 +3,26 @@
 {% block title %}Expertise index{% endblock %}
 
 {% block body %}
+
+<div class="container table-responsive py-5">
+
     <h1>Expertise index</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Icon_css</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for expertise in expertises %}
             <tr>
-                <td>{{ expertise.id }}</td>
+                <th scope="row">{{ expertise.id }}</th>
                 <td>{{ expertise.title }}</td>
                 <td>{{ expertise.description }}</td>
-                <td>{{ expertise.iconCss }}</td>
                 <td>
                     <a href="{{ path('app_expertise_show', {'id': expertise.id}) }}">show</a>
                     <a href="{{ path('app_expertise_edit', {'id': expertise.id}) }}">edit</a>
@@ -36,4 +37,12 @@
     </table>
 
     <a href="{{ path('app_expertise_new') }}">Create new</a>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+{% endblock %}
+{% block importmap %}
+    {{ importmap(['app_homepage', 'app_contact_us']) }}
 {% endblock %}
