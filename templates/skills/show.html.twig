@@ -3,12 +3,15 @@
 {% block title %}Skills{% endblock %}
 
 {% block body %}
+
+<div class="container table-responsive py-5">
+
     <h1>Skills</h1>
 
-    <table class="table">
+    <table class="table table-bordered table-hover">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th scope="row">Id</th>
                 <td>{{ skill.id }}</td>
             </tr>
             <tr>
@@ -20,19 +23,19 @@
                 <td>{{ skill.percentage }}</td>
             </tr>
             <tr>
-                <th>ForeignObjectX</th>
+                <th>Foreign Object X</th>
                 <td>{{ skill.foreignObjectX }}</td>
             </tr>
             <tr>
-                <th>ForeignObjectY</th>
+                <th>Foreign Object Y</th>
                 <td>{{ skill.foreignObjectY }}</td>
             </tr>
             <tr>
-                <th>ForeignObjectWidth</th>
+                <th>Foreign Object Width</th>
                 <td>{{ skill.foreignObjectWidth }}</td>
             </tr>
             <tr>
-                <th>ForeignObjectHeight</th>
+                <th>Foreign Object Height</th>
                 <td>{{ skill.foreignObjectHeight }}</td>
             </tr>
         </tbody>
@@ -43,4 +46,13 @@
     <a href="{{ path('app_skills_edit', {'id': skill.id}) }}">edit</a>
 
     {{ include('skills/_delete_form.html.twig') }}
+
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+{% endblock %}
+{% block importmap %}
+    {{ importmap(['app_homepage', 'app_contact_us']) }}
 {% endblock %}
