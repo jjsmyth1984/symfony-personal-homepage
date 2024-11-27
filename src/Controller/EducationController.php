@@ -10,8 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/admin/education')]
+#[Route('/education')]
+#[IsGranted('ROLE_ADMIN')]
 final class EducationController extends AbstractController
 {
     #[Route(name: 'app_education_index', methods: ['GET'])]
@@ -71,7 +73,7 @@ final class EducationController extends AbstractController
     #[Route('/{id}/delete', name: 'app_education_delete', methods: ['POST'])]
     public function delete(Request $request, Education $education, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$education->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $education->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($education);
             $entityManager->flush();
         }

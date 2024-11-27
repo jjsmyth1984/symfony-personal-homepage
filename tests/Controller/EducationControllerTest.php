@@ -13,7 +13,7 @@ final class EducationControllerTest extends WebTestCase
 //    private KernelBrowser $client;
 //    private EntityManagerInterface $manager;
 //    private EntityRepository $repository;
-//    private string $path = '/admin/education/';
+//    private string $path = '/education/';
 //
 //    protected function setUp(): void
 //    {

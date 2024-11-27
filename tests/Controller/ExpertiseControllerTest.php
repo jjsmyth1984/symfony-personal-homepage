@@ -13,7 +13,7 @@ final class ExpertiseControllerTest extends WebTestCase
 //    private KernelBrowser $client;
 //    private EntityManagerInterface $manager;
 //    private EntityRepository $repository;
-//    private string $path = '/admin/expertise/';
+//    private string $path = '/expertise/';
 //
 //    protected function setUp(): void
 //    {

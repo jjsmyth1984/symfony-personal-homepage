@@ -25,7 +25,7 @@ class WorkExperienceType extends AbstractType
             ->add('description')
             ->add('user', EntityType::class, [
                 'class' => User::class,
-'choice_label' => 'id',
+        'choice_label' => 'id',
             ])
         ;
     }

@@ -10,8 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/admin/work-experience')]
+#[Route('/work-experience')]
+#[IsGranted('ROLE_ADMIN')]
 final class WorkExperienceController extends AbstractController
 {
     #[Route(name: 'app_work_experience_index', methods: ['GET'])]
@@ -51,8 +53,11 @@ final class WorkExperienceController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_work_experience_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, WorkExperience $workExperience, EntityManagerInterface $entityManager): Response
-    {
+    public function edit(
+        Request $request,
+        WorkExperience $workExperience,
+        EntityManagerInterface $entityManager,
+    ): Response {
         $form = $this->createForm(WorkExperienceType::class, $workExperience);
         $form->handleRequest($request);
 
@@ -69,9 +74,12 @@ final class WorkExperienceController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_work_experience_delete', methods: ['POST'])]
-    public function delete(Request $request, WorkExperience $workExperience, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$workExperience->getId(), $request->getPayload()->getString('_token'))) {
+    public function delete(
+        Request $request,
+        WorkExperience $workExperience,
+        EntityManagerInterface $entityManager,
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $workExperience->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($workExperience);
             $entityManager->flush();
         }

@@ -10,8 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/admin/expertise')]
+#[Route('/expertise')]
+#[IsGranted('ROLE_ADMIN')]
 final class ExpertiseController extends AbstractController
 {
     #[Route(name: 'app_expertise_index', methods: ['GET'])]
@@ -71,7 +73,7 @@ final class ExpertiseController extends AbstractController
     #[Route('/{id}/delete', name: 'app_expertise_delete', methods: ['POST'])]
     public function delete(Request $request, Expertise $expertise, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$expertise->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $expertise->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($expertise);
             $entityManager->flush();
         }

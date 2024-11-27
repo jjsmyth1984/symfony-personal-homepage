@@ -19,7 +19,7 @@ class ExpertiseType extends AbstractType
             ->add('icon_css')
             ->add('user', EntityType::class, [
                 'class' => User::class,
-'choice_label' => 'id',
+        'choice_label' => 'id',
             ])
         ;
     }

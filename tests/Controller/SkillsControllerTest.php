@@ -25,7 +25,7 @@ final class SkillsControllerTest extends WebTestCase
 //     * @var EntityRepository
 //     */
 //    private EntityRepository $repository;
-//    private string $path = '/admin/skills/';
+//    private string $path = '/skills/';
 //
 //    protected function setUp(): void
 //    {

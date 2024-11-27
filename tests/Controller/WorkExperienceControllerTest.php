@@ -13,7 +13,7 @@ final class WorkExperienceControllerTest extends WebTestCase
 //    private KernelBrowser $client;
 //    private EntityManagerInterface $manager;
 //    private EntityRepository $repository;
-//    private string $path = '/admin/work-experience/';
+//    private string $path = '/work-experience/';
 //
 //    protected function setUp(): void
 //    {
