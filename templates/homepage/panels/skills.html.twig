@@ -10,8 +10,11 @@
         {% endif %}
         {% for skill in userAccount.skills|sort((a, b) => b.percentage <=> a.percentage)|slice(0,4) %}
             <div class="col-md-3 col-sm-6 text-center">
-                <svg height="250" viewBox="0 0 160 200" class="circular-progress-1" preserveAspectRatio="xMaxYMax meet">
-                    <foreignobject class="node" x="{{ skill.foreignObjectX|escape }}" y="{{ skill.foreignObjectY|escape }}" width="{{ skill.foreignObjectWidth|escape }}" height="{{ skill.foreignObjectHeight|escape }}">
+                <svg data-title="{{ skill.title|upper|escape }}" height="250" viewBox="0 0 160 200"
+                     class="circular-progress-1" preserveAspectRatio="xMaxYMax meet">
+                    <foreignobject class="node" x="{{ skill.foreignObjectX|escape }}"
+                                   y="{{ skill.foreignObjectY|escape }}" width="{{ skill.foreignObjectWidth|escape }}"
+                                   height="{{ skill.foreignObjectHeight|escape }}">
                         <span>{{ skill.title|upper|escape }}<br>{{ skill.percentage|escape }}%</span>
                     </foreignobject>
                     <circle class="bg"></circle>
@@ -21,179 +24,31 @@
         {% endfor %}
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="progress-wrap">
-                <h3><span class="name-left">GIT</span><span class="value-right">85%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="git" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%">
+        {% for skill in userAccount.skills|sort((a, b) => b.percentage <=> a.percentage)|slice(5,50) %}
+            {% set progressColour = 'progress-bar-1' %}
+            {% if skill.percentage >= 85 %}
+                {% set progressColour = 'progress-bar-2' %}
+            {% elseif skill.percentage >= 75 %}
+                {% set progressColour = 'progress-bar-3' %}
+            {% elseif skill.percentage >= 55 %}
+                {% set progressColour = 'progress-bar-5' %}
+            {% endif %}
+            <div class="col-md-4">
+                <div class="progress-wrap">
+                    <h3>
+                        <span class="name-left">{{ skill.title|escape }}</span>
+                        <span class="value-right">{{ skill.percentage|escape }}%</span>
+                    </h3>
+                    <div class="progress">
+                        <div class="progress-bar {{ progressColour|escape }} progress-bar-striped active"
+                             role="progressbar"
+                             aria-label="{{ skill.percentage|lower|escape }}"
+                             aria-valuenow="{{ skill.percentage|escape }}"
+                             aria-valuemin="0" aria-valuemax="100" style="width:{{ skill.percentage|escape }}%">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">JavaScript</span><span class="value-right">84%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="javascript" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="width:84%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">MYSQL</span><span class="value-right">84%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="mysql" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="width:84%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">Restful API's</span><span class="value-right">83%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="restfull apis" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" style="width:83%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">MSSQL</span><span class="value-right">82%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="mysql" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width:82%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">TailwindCSS</span><span class="value-right">81%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="tailwindcss" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width:81%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">MariaDB</span><span class="value-right">81%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="mariadb" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" style="width:81%">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="progress-wrap">
-                <h3><span class="name-left">BootstrapCSS</span><span class="value-right">80%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="bootstrapcss" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">PostgreSQL</span><span class="value-right">80%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="postgresql" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">FoundationCSS</span><span class="value-right">80%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-                         aria-label="foundationcss" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">NodeJS</span><span class="value-right">78%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                         aria-label="nodejs" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width:78%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">Laravel</span><span class="value-right">76%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                         aria-label="laravel" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100" style="width:76%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">ExpressJS</span><span class="value-right">75%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                         aria-label="expressjs" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">VueJS</span><span class="value-right">73%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                         aria-label="vuajs" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width:73%">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="progress-wrap">
-                <h3><span class="name-left">Angular</span><span class="value-right">71%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-                         aria-label="angular" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width:71%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">MongoDB</span><span class="value-right">67%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
-                         aria-label="mongodb" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width:67%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">VB.Net</span><span class="value-right">60%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-5 progress-bar-striped active" role="progressbar"
-                         aria-label="vb.net" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">React</span><span class="value-right">45%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-                         aria-label="react" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:45%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">Typescript</span><span class="value-right">40%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-                         aria-label="typescript" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">Python</span><span class="value-right">25%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-                         aria-label="python" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                    </div>
-                </div>
-            </div>
-            <div class="progress-wrap">
-                <h3><span class="name-left">Java</span><span class="value-right">20%</span></h3>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-                         aria-label="java" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
