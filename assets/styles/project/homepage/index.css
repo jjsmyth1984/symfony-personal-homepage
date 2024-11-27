@@ -1995,3 +1995,7 @@ a.nav-link:hover
 {
     color: #ffffff;
 }
+
+thead.thead-dark tr th {
+    background-color: #e7e7e7;
+}
