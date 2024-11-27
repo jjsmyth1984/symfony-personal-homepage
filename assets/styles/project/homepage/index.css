@@ -1989,3 +1989,9 @@ h1, h2, h3 {
 .icon-linkedin2:before {
     content: "\ea74";
 }
+
+a.nav-link:focus,
+a.nav-link:hover
+{
+    color: #ffffff;
+}
