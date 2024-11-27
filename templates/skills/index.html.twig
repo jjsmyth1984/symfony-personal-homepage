@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Skills index{% endblock %}
+
+{% block body %}
+    <h1>Skills index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Percentage</th>
+                <th>ForeignObjectX</th>
+                <th>ForeignObjectY</th>
+                <th>ForeignObjectWidth</th>
+                <th>ForeignObjectHeight</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for skill in skills %}
+            <tr>
+                <td>{{ skill.id }}</td>
+                <td>{{ skill.title }}</td>
+                <td>{{ skill.percentage }}</td>
+                <td>{{ skill.foreignObjectX }}</td>
+                <td>{{ skill.foreignObjectY }}</td>
+                <td>{{ skill.foreignObjectWidth }}</td>
+                <td>{{ skill.foreignObjectHeight }}</td>
+                <td>
+                    <a href="{{ path('app_skills_show', {'id': skill.id}) }}">show</a>
+                    <a href="{{ path('app_skills_edit', {'id': skill.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_skills_new') }}">Create new</a>
+{% endblock %}
