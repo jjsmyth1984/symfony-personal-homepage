@@ -3,43 +3,45 @@
 {% block title %}Skills index{% endblock %}
 
 {% block body %}
-    <h1>Skills index</h1>
 
-    <table class="table">
-        <thead>
+    <div class="container table-responsive py-5">
+        <h1>Skills index</h1>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Percentage</th>
-                <th>ForeignObjectX</th>
-                <th>ForeignObjectY</th>
-                <th>ForeignObjectWidth</th>
-                <th>ForeignObjectHeight</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Percentage</th>
+                <th scope="col">actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for skill in skills %}
-            <tr>
-                <td>{{ skill.id }}</td>
-                <td>{{ skill.title }}</td>
-                <td>{{ skill.percentage }}</td>
-                <td>{{ skill.foreignObjectX }}</td>
-                <td>{{ skill.foreignObjectY }}</td>
-                <td>{{ skill.foreignObjectWidth }}</td>
-                <td>{{ skill.foreignObjectHeight }}</td>
-                <td>
-                    <a href="{{ path('app_skills_show', {'id': skill.id}) }}">show</a>
-                    <a href="{{ path('app_skills_edit', {'id': skill.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% set count = 1 %}
+            {% for skill in skills|sort((a, b) => b.percentage <=> a.percentage) %}
+                <tr>
+                    <th scope="row">{{ count }}</th>
+                    <td>{{ skill.title }}</td>
+                    <td>{{ skill.percentage }}</td>
+                    <td>
+                        <a href="{{ path('app_skills_show', {'id': skill.id}) }}">show</a>
+                        <a href="{{ path('app_skills_edit', {'id': skill.id}) }}">edit</a>
+                    </td>
+                </tr>
+                {% set count = count + 1 %}
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_skills_new') }}">Create new</a>
+    </div>
+{% endblock %}
 
-    <a href="{{ path('app_skills_new') }}">Create new</a>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+{% endblock %}
+{% block importmap %}
+    {{ importmap(['app_homepage', 'app_contact_us']) }}
 {% endblock %}
