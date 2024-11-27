@@ -3,12 +3,15 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
+
+<div class="container table-responsive py-5">
+
     <h1>User</h1>
 
-    <table class="table">
+    <table class="table table-bordered table-hover">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th scope="row">Id</th>
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
@@ -24,48 +27,12 @@
                 <td>{{ user.jobTitle }}</td>
             </tr>
             <tr>
-                <th>Location</th>
-                <td>{{ user.location }}</td>
-            </tr>
-            <tr>
-                <th>Linkedin</th>
-                <td>{{ user.linkedin }}</td>
-            </tr>
-            <tr>
-                <th>Github</th>
-                <td>{{ user.github }}</td>
-            </tr>
-            <tr>
-                <th>Website</th>
-                <td>{{ user.website }}</td>
-            </tr>
-            <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>AboutMe</th>
-                <td>{{ user.aboutMe }}</td>
-            </tr>
-            <tr>
-                <th>Philosophy</th>
-                <td>{{ user.philosophy }}</td>
-            </tr>
-            <tr>
                 <th>CreatedAt</th>
                 <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>LastUpdatedAt</th>
-                <td>{{ user.lastUpdatedAt ? user.lastUpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
             </tr>
         </tbody>
     </table>
@@ -75,4 +42,14 @@
     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('user/_delete_form.html.twig') }}
+
+</div>
 {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+{% endblock %}
+{% block importmap %}
+    {{ importmap(['app_homepage', 'app_contact_us']) }}
+{% endblock %}
+
