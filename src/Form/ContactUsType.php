@@ -22,6 +22,7 @@ class ContactUsType extends AbstractType
                 [
                     'label' => ' ',
                     'required' => true,
+                    'translation_domain' => false,
                     'attr' => [
                         'placeholder' => 'Your firstname',
                         'class' => 'form-control',
@@ -36,6 +37,7 @@ class ContactUsType extends AbstractType
                 [
                     'label' => ' ',
                     'required' => true,
+                    'translation_domain' => false,
                     'attr' => [
                         'placeholder' => 'Your surname',
                         'class' => 'form-control',
@@ -50,6 +52,7 @@ class ContactUsType extends AbstractType
                 [
                     'label' => 'Email',
                     'required' => false,
+                    'translation_domain' => false,
                     'attr' => [
                         'placeholder' => 'Your email',
                         'class' => 'form-control',
@@ -63,6 +66,7 @@ class ContactUsType extends AbstractType
                 [
                     'label' => '',
                     'required' => true,
+                    'translation_domain' => false,
                     'choices' => [
                         'Please select a subject' => '',
                         'General enquiry' => 'General enquiry',
@@ -82,6 +86,7 @@ class ContactUsType extends AbstractType
                 TextareaType::class,
                 [
                     'label' => 'Description',
+                    'translation_domain' => false,
                     'attr' => [
                         'rows' => 30,
                         'cols' => 100,
