@@ -1,0 +1,34 @@
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link {% if app.request.attributes.get("_route") == 'app_homepage' %} text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_homepage' %}aria-current="{{ app.request.attributes.get("_route") }}"{% endif %} href="{{ path('app_homepage') }}">Homepage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get("_route") == 'app_user_index' %} text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_user_index' %}aria-current="{{ app.request.attributes.get("_route") }}"{% endif %}  href="{{ path('app_user_index') }}">User</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get("_route") == 'app_work_experience_index' %} text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_work_experience_index' %}aria-current="{{ app.request.attributes.get("_route") }}"{% endif %}  href="{{ path('app_work_experience_index') }}">Work experience</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get("_route") == 'app_education_index' %} text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_education_index' %}aria-current="{{ app.request.attributes.get("_route") }}"{% endif %}  href="{{ path('app_education_index') }}">Education</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get("_route") == 'app_expertise_index' %} text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_expertise_index' %}aria-current="{{ app.request.attributes.get("_route") }}"{% endif %}  href="{{ path('app_expertise_index') }}">Expertise</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get("_route") == 'app_skills_index' %} text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_skills_index' %}aria-current="{{ app.request.attributes.get("_route") }}"{% endif %}  href="{{ path('app_skills_index') }}">Skills</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button id="burger-menu" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>

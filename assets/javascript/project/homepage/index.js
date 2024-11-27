@@ -1,5 +1,7 @@
 let documentHeader = document.getElementById('fh5co-loader');
-fadeOut(documentHeader);
+if (documentHeader) {
+    fadeOut(documentHeader);
+}
 
 /**
  *
@@ -17,4 +19,17 @@ function fadeOut(elem) {
         fadeOut(elem);
         elem.style.position = 'unset';
     }, 15);
+}
+
+let burgerMenu = document.getElementById('burger-menu');
+
+if(burgerMenu) {
+    burgerMenu.addEventListener('click', function (e) {
+        let burgerMenuBody = document.getElementById(this.getAttribute('data-bs-target'));
+        if (burgerMenuBody.classList.contains('collapse')) {
+            burgerMenuBody.classList.remove('collapse');
+        } else {
+            burgerMenuBody.classList.add('collapse');
+        }
+    });
 }
