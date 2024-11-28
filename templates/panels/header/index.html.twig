@@ -20,6 +20,9 @@
                 <a class="nav-link{% if app.request.attributes.get("_route") == 'app_skills_index' %}text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_skills_index' %}aria-current="true"{% endif %}  href="{{ path('app_skills_index') }}">Skills</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link{% if app.request.attributes.get("_route") == 'app_resume_index' %}text-white active{% endif %}" {% if app.request.attributes.get("_route") == 'app_resume_index' %}aria-current="true"{% endif %}  href="{{ path('app_resume_index') }}">Resume</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
             </li>
         </ul>
