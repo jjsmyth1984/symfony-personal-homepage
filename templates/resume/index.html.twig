@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resume index{% endblock %}
+
+{% block body %}
+
+    <div class="container table-responsive py-5">
+
+        <h1>Resume index</h1>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Resume filename</th>
+                <th scope="col">actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for resume in resumes %}
+                <tr>
+                    <th scope="row">{{ resume.id }}</th>
+                    <td>{{ resume.resumeFilename }}</td>
+                    <td>
+                        <a href="{{ path('app_resume_show', {'id': resume.id}) }}">show</a>
+                        <a href="{{ path('app_resume_edit', {'id': resume.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_resume_new') }}">Create new</a>
+
+    </div>
+{% endblock %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/project/homepage/index.css') }}">
+    {% endblock %}
+    {% block importmap %}
+        {{ importmap(['app_homepage', 'app_contact_us']) }}
+    {% endblock %}

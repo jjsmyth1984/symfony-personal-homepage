@@ -42,3 +42,4 @@ phpstan.neon
 ###< friendsofphp/php-cs-fixer ###
 /.env
 /migrations/
+/public/uploads/

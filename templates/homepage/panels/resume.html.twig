@@ -2,12 +2,16 @@
     <div class="row animate-box">
         <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
             <h2>My Resume</h2>
+            {% if userAccount.resume|length == 0 %}
+                <div class="alert alert-danger" role="alert">Please add your Resume</div>
+            {% endif %}
             <div class="custom-btn-group mt-4">
-                <a href="{{ asset('fs/cv/JosephJamesSmythCV.pdf') }}" class="btn mr-lg-2 custom-btn"
-                   download="JosephJamesSmythCV.pdf">
-                    <i class="uil uil-file-alt"></i>
-                    Download Resume
-                </a>
+                {% for resume in userAccount.resume %}
+                    <a href="{{ asset('uploads/resume/') }}{{ resume.resumeFilename|escape }}" class="btn mr-lg-2 custom-btn" download="{{ resume.resumeFilename|escape }}">
+                        <i class="uil uil-file-alt"></i>
+                        Download Resume
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>

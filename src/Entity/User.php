@@ -27,6 +27,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->education = new ArrayCollection();
         $this->expertise = new ArrayCollection();
         $this->skills = new ArrayCollection();
+        $this->resume = new ArrayCollection();
     }
 
 
@@ -83,6 +84,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /** @var Collection<int, Skills> */
     #[ORM\OneToMany(targetEntity: Skills::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
     private Collection $skills;
+
+    /** @var Collection<int, Resume> */
+    #[ORM\OneToMany(targetEntity: Resume::class, mappedBy: 'user', fetch: 'EAGER', orphanRemoval: true)]
+    private Collection $resume;
 
     #[ORM\Column(name: 'created_at', type: 'datetime')]
     private ?object $createdAt;
@@ -398,6 +403,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($skills->getUser() === $this) {
                 $skills->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /** @return Collection<int, Resume> */
+    public function getResume(): Collection
+    {
+        return $this->resume;
+    }
+
+    public function addResume(Resume $resume): self
+    {
+        if (!$this->resume->contains($resume)) {
+            $this->resume[] = $resume;
+            // optional but keeps both sides in sync
+            $resume->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResume(Resume $resume): self
+    {
+        if ($this->resume->removeElement($resume)) {
+            // set the owning side to null (unless already changed)
+            if ($resume->getUser() === $this) {
+                $resume->setUser(null);
             }
         }
 

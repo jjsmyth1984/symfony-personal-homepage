@@ -22,9 +22,8 @@ class SkillsType extends AbstractType
             ->add('foreignObjectHeight')
             ->add('user', EntityType::class, [
                 'class' => User::class,
-        'choice_label' => 'id',
-            ])
-        ;
+                'choice_label' => 'id',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
