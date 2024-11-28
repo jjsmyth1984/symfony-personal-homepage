@@ -11,26 +11,26 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RegistrationControllerTest extends WebTestCase
 {
-    private KernelBrowser $client;
-    private UserRepository $userRepository;
-
-    protected function setUp(): void
-    {
-        $this->client = static::createClient();
-
-        // Ensure we have a clean database
-        $container = static::getContainer();
-
-        /** @var EntityManager $em */
-        $em = $container->get('doctrine')->getManager();
-        $this->userRepository = $container->get(UserRepository::class);
-
-        foreach ($this->userRepository->findAll() as $user) {
-            $em->remove($user);
-        }
-
-        $em->flush();
-    }
+//    private KernelBrowser $client;
+//    private UserRepository $userRepository;
+//
+//    protected function setUp(): void
+//    {
+//        $this->client = static::createClient();
+//
+//        // Ensure we have a clean database
+//        $container = static::getContainer();
+//
+//        /** @var EntityManager $em */
+//        $em = $container->get('doctrine')->getManager();
+//        $this->userRepository = $container->get(UserRepository::class);
+//
+//        foreach ($this->userRepository->findAll() as $user) {
+//            $em->remove($user);
+//        }
+//
+//        $em->flush();
+//    }
 
 //    public function testRegister(): void
 //    {

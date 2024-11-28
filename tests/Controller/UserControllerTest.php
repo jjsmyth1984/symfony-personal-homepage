@@ -14,7 +14,6 @@ final class UserControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private EntityManagerInterface $manager;
-    private EntityRepository $repository;
     private string $path = '/user/';
 
     protected function setUp(): void

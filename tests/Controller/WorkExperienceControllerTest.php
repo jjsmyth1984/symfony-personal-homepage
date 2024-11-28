@@ -14,16 +14,15 @@ final class WorkExperienceControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private EntityManagerInterface $manager;
-    private EntityRepository $repository;
     private string $path = '/work-experience/';
 
     protected function setUp(): void
     {
         $this->client = static::createClient();
         $this->manager = static::getContainer()->get('doctrine')->getManager();
-        $this->repository = $this->manager->getRepository(WorkExperience::class);
+        $repository = $this->manager->getRepository(WorkExperience::class);
 
-        foreach ($this->repository->findAll() as $object) {
+        foreach ($repository->findAll() as $object) {
             $this->manager->remove($object);
         }
 
