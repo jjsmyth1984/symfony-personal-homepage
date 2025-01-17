@@ -5,7 +5,7 @@
 
 name: Symfony
 
-run-name: ${{ github.actor }} excuting PHP and Symfony automated tests and dploy if main 🚀
+run-name: ${{ github.actor }} excuting PHP and Symfony automated tests and deploy 🚀
 
 on:
   push:
